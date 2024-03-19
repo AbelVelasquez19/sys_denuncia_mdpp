@@ -31,8 +31,22 @@
     <link href="{{asset('asset/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('asset/css/app.css')}}" rel="stylesheet"> 
    {{--  <script src="{{ mix('asset/css/app.css') }}"></script> --}}
+   <script src="https://kit.fontawesome.com/1958147e4f.js" crossorigin="anonymous"></script>
 </head>
-
+<style>
+    fieldset {
+        border: 1px solid rgb(194, 194, 194) !important;
+        padding: 5px 10px !important;
+        border-radius: 5px;
+        height: 100%;
+    }
+    legend {
+        width: auto !important;
+        font-size: 0.9rem !important;
+        padding: 0 1px !important;
+        float: none !important;
+    }
+</style>
 <body>
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
