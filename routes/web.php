@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DenunciaAmbiental;
+use App\Http\Controllers\system\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,5 @@ use Illuminate\Support\Facades\Route;
 */
 Route::prefix('denuncia-ambiental')->group(function () {
     Route::get('/', [DenunciaAmbiental::class,'index']);
+    Route::get('/user-search', [UserController::class,'getUser']);
 });

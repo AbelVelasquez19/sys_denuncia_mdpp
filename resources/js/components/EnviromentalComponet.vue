@@ -41,25 +41,25 @@
                             <div class="col-md-3">
                                 <label for="basic-url" class="form-label">N°. Doc.</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Numero Doc.">
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <label for="basic-url" class="form-label">Apellido Paterno</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Apellido Paterno">
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <label for="basic-url" class="form-label">Apellido Materno</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Apellido Materno">
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <label for="basic-url" class="form-label">Nombres</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Nombres">
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -67,26 +67,26 @@
                             <div class="col-md-4">
                                 <label for="basic-url" class="form-label">Telefono</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Telefono">
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <label for="basic-url" class="form-label">Celular</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Celular">
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <label for="basic-url" class="form-label">Correo</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Correo">
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="basic-url" class="form-label">Descripcion</label>
-                                <input type="text" class="form-control" placeholder="Descripcion">
+                                <input type="text" class="form-control">
                             </div>
                         </div>
                     </fieldset>
@@ -106,7 +106,7 @@
                             <div class="col-md-6">
                                 <label for="basic-url" class="form-label">¿Ante que entidad?</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Ante que entidad ?">
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -124,7 +124,7 @@
                             <div class="col-md-6">
                                 <label for="basic-url" class="form-label">¿Cuál fue la respuesta?</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Cuál fue la respuesta?">
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -175,25 +175,25 @@
                             <div class="col-md-3">
                                 <label for="basic-url" class="form-label">N°. Doc.</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Numero Doc.">
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <label for="basic-url" class="form-label">Apellido Paterno</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Apellido Paterno">
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <label for="basic-url" class="form-label">Apellido Materno</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Apellido Materno">
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <label for="basic-url" class="form-label">Nombres</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Nombres">
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -201,26 +201,26 @@
                             <div class="col-md-4">
                                 <label for="basic-url" class="form-label">Telefono</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Telefono">
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <label for="basic-url" class="form-label">Celular</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Celular">
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <label for="basic-url" class="form-label">Correo</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Correo">
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="basic-url" class="form-label">Descripcion</label>
-                                <input type="text" class="form-control" placeholder="Descripcion">
+                                <input type="text" class="form-control">
                             </div>
                         </div>
                     </fieldset>
@@ -230,19 +230,19 @@
                             <div class="col-md-4">
                                 <label for="basic-url" class="form-label">Dirección</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Dirección">
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <label for="basic-url" class="form-label">Referencia</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Referencia">
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <label for="basic-url" class="form-label">Cargar archivos de capacidad 2MB(MAX)</label>
                                 <div class="input-group mb-3">
-                                    <input type="file" class="form-control" placeholder="Referencia">
+                                    <input type="file" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -271,8 +271,23 @@
                         <div class="row mt-2">
                             <div class="col-md-12" id="map-container">
                                 <label for="basic-url" class="form-label">Marque la ubicación de los hechos</label>
-                                <l-map :zoom="zoom" :center="center" style="height: 92%; width: 100%">
-                                    <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+                                <l-map 
+                                        ref="mymap"
+                                        :zoom="zoom" 
+                                        :options="mapOptions"
+                                        :center="center" 
+                                        style="height: 92%; width: 100%">
+                                    <l-tile-layer
+                                        v-for="tileProvider in tileProviders"
+                                        :key="tileProvider.name"
+                                        :name="tileProvider.name"
+                                        :visible="tileProvider.visible"
+                                        :url="tileProvider.url"
+                                        :attribution="tileProvider.attribution"
+                                       
+                                        layer-type="base"
+                                    />
+                                    <l-control-zoom :position="zoomPosition" />
                                     <l-marker
                                         v-for="marker in markers"
                                         :key="marker.id"
@@ -302,23 +317,70 @@
 </template>
 
 <script>
-   import { Icon } from 'leaflet';   
-    import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+    import { Icon } from 'leaflet';   
+    import { LMap,
+        LTileLayer,
+        LControlZoom,
+        LPopup,
+        LMarker,
+        LTooltip,
+        LLayerGroup,
+        LPolyline,
+        LControlAttribution,
+        LControlScale,
+        LControlLayers } 
+    from 'vue2-leaflet';
     import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
     export default {
         name:'enviromentalComponet',
+        props:{
+            imgUrl: {
+                type: String,
+                default: ""
+            },
+            imgShadow: {
+                type: String,
+                default: ""
+            },
+        },
         components:{
             LMap,
             LTileLayer,
-            LMarker
+            LControlZoom,
+            LPopup,
+            LMarker,
+            LTooltip,
+            LLayerGroup,
+            LPolyline,
+            LControlAttribution,
+            LControlScale,
+            LControlLayers
         },
         data(){
             return {
                 NumerNext:1,
                 zoom: 15,
                 center: [-11.86689943166356, -77.07686732141322],
-                url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                attribution: '&copy; OpenStreetMap contributors',
+                mapOptions: {
+                    zoomControl: false,
+                    attributionControl: false,
+                    zoomSnap: 0.5,
+                },
+                zoomPosition: 'topleft',
+                attributionPosition: 'bottomright',
+                layersPosition: 'topright',
+                attributionPrefix: 'Vue2Leaflet',
+                imperial: false,
+                Positions: ['topleft', 'topright', 'bottomleft', 'bottomright'],
+                tileProviders: [
+                    {
+                        name: 'OpenStreetMap',
+                        visible: true,
+                        attribution:'&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+                        url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    }
+                ],
+                markerLatLng: [],
                 markers: [
                     {
                     id: 'm1',
@@ -342,8 +404,8 @@
             next(){
                 this.NumerNext = 2;
                 setTimeout(() => {
-                        this.$refs.mymap.mapObject.invalidateSize(); 
-            }, 500);
+                    this.$refs.mymap.mapObject.invalidateSize(); 
+            },  500);
             },
             previus(){
                 this.NumerNext = 1;

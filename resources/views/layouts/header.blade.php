@@ -89,7 +89,7 @@
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
         <a href="index.html" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
             <h2 class="m-0">
-                <img src="https://virtual2.munipuentepiedra.gob.pe/assets/tools/image/logo_muni_color.png" alt="">
+                <img src="https://virtual2.munipuentepiedra.gob.pe/assets/tools/image/logo_muni_color.png" alt="" width="100%" height="100%">
             </h2>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">

@@ -1918,18 +1918,52 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'enviromentalComponet',
+  props: {
+    imgUrl: {
+      type: String,
+      "default": ""
+    },
+    imgShadow: {
+      type: String,
+      "default": ""
+    }
+  },
   components: {
     LMap: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LMap"],
     LTileLayer: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LTileLayer"],
-    LMarker: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LMarker"]
+    LControlZoom: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LControlZoom"],
+    LPopup: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LPopup"],
+    LMarker: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LMarker"],
+    LTooltip: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LTooltip"],
+    LLayerGroup: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LLayerGroup"],
+    LPolyline: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LPolyline"],
+    LControlAttribution: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LControlAttribution"],
+    LControlScale: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LControlScale"],
+    LControlLayers: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LControlLayers"]
   },
   data: function data() {
     return {
       NumerNext: 1,
       zoom: 15,
       center: [-11.86689943166356, -77.07686732141322],
-      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      attribution: '&copy; OpenStreetMap contributors',
+      mapOptions: {
+        zoomControl: false,
+        attributionControl: false,
+        zoomSnap: 0.5
+      },
+      zoomPosition: 'topleft',
+      attributionPosition: 'bottomright',
+      layersPosition: 'topright',
+      attributionPrefix: 'Vue2Leaflet',
+      imperial: false,
+      Positions: ['topleft', 'topright', 'bottomleft', 'bottomright'],
+      tileProviders: [{
+        name: 'OpenStreetMap',
+        visible: true,
+        attribution: '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+        url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+      }],
+      markerLatLng: [],
       markers: [{
         id: 'm1',
         position: {
@@ -2114,18 +2148,30 @@ var render = function render() {
       "for": "basic-url"
     }
   }, [_vm._v("Marque la ubicación de los hechos")]), _vm._v(" "), _c("l-map", {
+    ref: "mymap",
     staticStyle: {
       height: "92%",
       width: "100%"
     },
     attrs: {
       zoom: _vm.zoom,
+      options: _vm.mapOptions,
       center: _vm.center
     }
-  }, [_c("l-tile-layer", {
+  }, [_vm._l(_vm.tileProviders, function (tileProvider) {
+    return _c("l-tile-layer", {
+      key: tileProvider.name,
+      attrs: {
+        name: tileProvider.name,
+        visible: tileProvider.visible,
+        url: tileProvider.url,
+        attribution: tileProvider.attribution,
+        "layer-type": "base"
+      }
+    });
+  }), _vm._v(" "), _c("l-control-zoom", {
     attrs: {
-      url: _vm.url,
-      attribution: _vm.attribution
+      position: _vm.zoomPosition
     }
   }), _vm._v(" "), _vm._l(_vm.markers, function (marker) {
     return _c("l-marker", {
@@ -2291,8 +2337,7 @@ var staticRenderFns = [function () {
   }, [_c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      placeholder: "Numero Doc."
+      type: "text"
     }
   })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-3"
@@ -2306,8 +2351,7 @@ var staticRenderFns = [function () {
   }, [_c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      placeholder: "Apellido Paterno"
+      type: "text"
     }
   })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-3"
@@ -2321,8 +2365,7 @@ var staticRenderFns = [function () {
   }, [_c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      placeholder: "Apellido Materno"
+      type: "text"
     }
   })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-3"
@@ -2336,8 +2379,7 @@ var staticRenderFns = [function () {
   }, [_c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      placeholder: "Nombres"
+      type: "text"
     }
   })])])]);
 }, function () {
@@ -2357,8 +2399,7 @@ var staticRenderFns = [function () {
   }, [_c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      placeholder: "Telefono"
+      type: "text"
     }
   })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-4"
@@ -2372,8 +2413,7 @@ var staticRenderFns = [function () {
   }, [_c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      placeholder: "Celular"
+      type: "text"
     }
   })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-4"
@@ -2387,8 +2427,7 @@ var staticRenderFns = [function () {
   }, [_c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      placeholder: "Correo"
+      type: "text"
     }
   })])])]);
 }, function () {
@@ -2406,8 +2445,7 @@ var staticRenderFns = [function () {
   }, [_vm._v("Descripcion")]), _vm._v(" "), _c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      placeholder: "Descripcion"
+      type: "text"
     }
   })])]);
 }, function () {
@@ -2456,8 +2494,7 @@ var staticRenderFns = [function () {
   }, [_c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      placeholder: "Ante que entidad ?"
+      type: "text"
     }
   })])])]);
 }, function () {
@@ -2506,8 +2543,7 @@ var staticRenderFns = [function () {
   }, [_c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      placeholder: "Cuál fue la respuesta?"
+      type: "text"
     }
   })])])]);
 }, function () {
@@ -2620,8 +2656,7 @@ var staticRenderFns = [function () {
   }, [_c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      placeholder: "Numero Doc."
+      type: "text"
     }
   })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-3"
@@ -2635,8 +2670,7 @@ var staticRenderFns = [function () {
   }, [_c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      placeholder: "Apellido Paterno"
+      type: "text"
     }
   })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-3"
@@ -2650,8 +2684,7 @@ var staticRenderFns = [function () {
   }, [_c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      placeholder: "Apellido Materno"
+      type: "text"
     }
   })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-3"
@@ -2665,8 +2698,7 @@ var staticRenderFns = [function () {
   }, [_c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      placeholder: "Nombres"
+      type: "text"
     }
   })])])]);
 }, function () {
@@ -2686,8 +2718,7 @@ var staticRenderFns = [function () {
   }, [_c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      placeholder: "Telefono"
+      type: "text"
     }
   })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-4"
@@ -2701,8 +2732,7 @@ var staticRenderFns = [function () {
   }, [_c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      placeholder: "Celular"
+      type: "text"
     }
   })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-4"
@@ -2716,8 +2746,7 @@ var staticRenderFns = [function () {
   }, [_c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      placeholder: "Correo"
+      type: "text"
     }
   })])])]);
 }, function () {
@@ -2735,8 +2764,7 @@ var staticRenderFns = [function () {
   }, [_vm._v("Descripcion")]), _vm._v(" "), _c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      placeholder: "Descripcion"
+      type: "text"
     }
   })])]);
 }, function () {
@@ -2756,8 +2784,7 @@ var staticRenderFns = [function () {
   }, [_c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      placeholder: "Dirección"
+      type: "text"
     }
   })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-4"
@@ -2771,8 +2798,7 @@ var staticRenderFns = [function () {
   }, [_c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      placeholder: "Referencia"
+      type: "text"
     }
   })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-4"
@@ -2786,8 +2812,7 @@ var staticRenderFns = [function () {
   }, [_c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "file",
-      placeholder: "Referencia"
+      type: "file"
     }
   })])])]);
 }, function () {
