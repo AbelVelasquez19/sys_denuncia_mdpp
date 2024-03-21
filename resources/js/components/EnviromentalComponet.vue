@@ -41,7 +41,7 @@
                             <div class="col-md-3">
                                 <label for="basic-url" class="form-label">N°. Doc.</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" v-model="user.numDoc" @blur="searchUser()">
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -59,7 +59,7 @@
                             <div class="col-md-3">
                                 <label for="basic-url" class="form-label">Nombres</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" v-model="user.name">
                                 </div>
                             </div>
                         </div>
@@ -317,6 +317,7 @@
 </template>
 
 <script>
+    import Services from '../services/services';
     import { Icon } from 'leaflet';   
     import { LMap,
         LTileLayer,
@@ -331,6 +332,7 @@
         LControlLayers } 
     from 'vue2-leaflet';
     import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+import { use } from 'vue/types/umd';
     export default {
         name:'enviromentalComponet',
         props:{
@@ -390,6 +392,10 @@
                     visible: true,
                     },
                 ],
+                user:{
+                    numDoc:'',
+                    name:''
+                }
             }
         },
         mounted() {
@@ -409,6 +415,12 @@
             },
             previus(){
                 this.NumerNext = 1;
+            },
+            async searchUser(){
+                const result = await Services.getShowInfo('/denuncia-ambiental/user-search', this.user.numDoc);
+                if(result.status){
+                    this.user.name=result.data[0].no_usrio
+                }
             }
         }
     }
