@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -63,6 +63,21 @@ return [
             ]) : [],
         ],
 
+        'sigtram' => [
+            'driver' => 'pgsql',
+            'url' => env('DATABASE_URL'),
+            'host' => env('SIGTRAM_DB_HOST', '127.0.0.1'),
+            'port' => env('SIGTRAM_DB_PORT', '5432'),
+            'database' => env('SIGTRAM_DB_DATABASE', 'forge'),
+            'username' => env('SIGTRAM_DB_USERNAME', 'forge'),
+            'password' => env('SIGTRAM_DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
+        
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),

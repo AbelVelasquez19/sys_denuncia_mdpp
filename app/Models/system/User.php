@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-    protected $connection = 'pgsql';
+    protected $connection = 'sigtram';
     protected $table = 'sistema.p_usrios';
     protected $primaryKey = 'cdgo_usrios';
 }
