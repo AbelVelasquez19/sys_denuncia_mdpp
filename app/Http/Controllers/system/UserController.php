@@ -9,8 +9,9 @@ use App\Models\system\User;
 class UserController extends Controller
 {
     public function getUser(Request $request){
-        $numDoc = $request->params['numDoc'];
         $typeDoc = $request->params['typeDoc'];
+        $numDoc = $request->params['numDoc'];
+        $numRuc = $request->params['numRuc'];
         try {
             if($typeDoc==1){
                 $user = User::join('sistema.h_usrios_ntral','h_usrios_ntral.cdgo_usrios','=','p_usrios.cdgo_usrios')
@@ -37,8 +38,9 @@ class UserController extends Controller
                         'data'=>''
                     ]);
                 }
-            }else{
-                $user = User::select('no_crto','nu_docu','nu_tele','de_mail','de_dire')->where('nu_docu',$numDoc)->get();
+            }
+            if($typeDoc==2){
+                $user = User::select('no_crto','nu_docu','nu_tele','de_mail','de_dire')->where('nu_docu',$numRuc)->get();
                 if(count($user)>0){
                     return response()->json([
                         'status'=>true,

@@ -1,4 +1,4 @@
-<template>
+enviromental<template>
     <div class="container py-5 pt-lg-0">
         <div class="row gx-0">
             <div class="col-lg-12 wow fadeIn" data-wow-delay="0.1s">
@@ -9,7 +9,7 @@
                             <div class="col-md-4">
                                 <label for="basic-url" class="form-label">Tipo de Denunciante</label>
                                 <div class="input-group mb-3">
-                                    <select class="form-select" v-model="user.idTypeEnviromental" @change="typeEnviromental">
+                                    <select class="form-select" v-model="user.idTypeEnviromental">
                                         <option value="1">Anónimo</option>
                                         <option value="2">Con reserva de datos</option>
                                     </select>
@@ -123,7 +123,7 @@
                             <div class="col-md-6">
                                 <label for="basic-url" class="form-label">¿Ante que entidad?</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" v-model="user.obt_resp">
+                                    <input type="text" class="form-control" v-model="user.resp_previa">
                                 </div>
                             </div>
                         </div>
@@ -340,7 +340,7 @@
                     <div class="row mt-4" v-show="NumerNext==2">
                         <div class="col-md-4 offset-8 d-flex justify-content-end">
                             <button class="btn btn-info mx-2" @click="previus()">Atras <i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="btn btn-primary" @click="next()">Registrar</button>
+                            <button class="btn btn-primary" @click="addEnviromental()">Registrar</button>
                         </div>
                     </div>
                 </div>
@@ -463,11 +463,6 @@
                     files:'',
                     description:'',
                 },
-                idTypeEnviromental:1,
-                handleFileSelect(event){
-                    const selectedFiles = event.target.files;
-                    this.environmental.files = selectedFiles;
-                }
             }
         },
         mounted() {
@@ -491,14 +486,14 @@
             async searchUser(){
                 let obj = {
                     numDoc : this.user.numDoc,
+                    numRuc : this.user.numRuc,
                     typeDoc : this.user.typeDoc,
                 }
                 const result = await Services.getShowInfo('/denuncia-ambiental/user-search', obj);
-                console.log(result)
                 if(result.type=='DNI'){
                     if(result.status){
                         console.log(result.data[0])
-                        this.user.numDoc=result.data[0].nu_docu;
+                        /* this.user.numDoc=result.data[0].nu_docu; */
                         this.user.name=result.data[0].no_usrio;
                         this.user.lastName=result.data[0].ap_pate;
                         this.user.mothersLastName=result.data[0].ap_mate;
@@ -511,7 +506,7 @@
                     }
                 }else{
                     if(result.status){
-                        this.user.numRuc=result.data[0].nu_docu;
+                       /*  this.user.numRuc=result.data[0].nu_docu; */
                         this.user.razonSocial=result.data[0].no_crto;
                         this.user.cellPhone=result.data[0].nu_tele;
                         this.user.gmail=result.data[0].de_mail;
@@ -530,8 +525,9 @@
                 this.user.cellPhone="";
                 this.user.gmail="";
             },
-            typeEnviromental(){
-
+            handleFileSelect(event){
+                const selectedFiles = event.target.files;
+                this.environmental.files = selectedFiles;
             },
             changeTypeDocuUser(){
                 if(this.user.typePers==1){
@@ -546,6 +542,14 @@
                 }else{
                     this.enviromental.typeDoc = 2;
                 }
+            },
+            async addEnviromental(){
+                let obj = {
+                    user : this.user,
+                    enviromental : this.enviromental
+                }
+                const result = await Services.addNewInfo('/denuncia-ambiental/add-enviromental', obj);
+                console.log(result)
             }
         }
     }

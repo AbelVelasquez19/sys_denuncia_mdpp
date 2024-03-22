@@ -2017,11 +2017,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         references: '',
         files: '',
         description: ''
-      },
-      idTypeEnviromental: 1,
-      handleFileSelect: function handleFileSelect(event) {
-        var selectedFiles = event.target.files;
-        this.environmental.files = selectedFiles;
       }
     };
   },
@@ -2053,17 +2048,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               obj = {
                 numDoc: _this2.user.numDoc,
+                numRuc: _this2.user.numRuc,
                 typeDoc: _this2.user.typeDoc
               };
               _context.next = 3;
               return _services_services__WEBPACK_IMPORTED_MODULE_0__["default"].getShowInfo('/denuncia-ambiental/user-search', obj);
             case 3:
               result = _context.sent;
-              console.log(result);
               if (result.type == 'DNI') {
                 if (result.status) {
                   console.log(result.data[0]);
-                  _this2.user.numDoc = result.data[0].nu_docu;
+                  /* this.user.numDoc=result.data[0].nu_docu; */
                   _this2.user.name = result.data[0].no_usrio;
                   _this2.user.lastName = result.data[0].ap_pate;
                   _this2.user.mothersLastName = result.data[0].ap_mate;
@@ -2076,7 +2071,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
               } else {
                 if (result.status) {
-                  _this2.user.numRuc = result.data[0].nu_docu;
+                  /*  this.user.numRuc=result.data[0].nu_docu; */
                   _this2.user.razonSocial = result.data[0].no_crto;
                   _this2.user.cellPhone = result.data[0].nu_tele;
                   _this2.user.gmail = result.data[0].de_mail;
@@ -2085,7 +2080,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this2.clearInput();
                 }
               }
-            case 6:
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -2101,7 +2096,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.user.cellPhone = "";
       this.user.gmail = "";
     },
-    typeEnviromental: function typeEnviromental() {},
+    handleFileSelect: function handleFileSelect(event) {
+      var selectedFiles = event.target.files;
+      this.environmental.files = selectedFiles;
+    },
     changeTypeDocuUser: function changeTypeDocuUser() {
       if (this.user.typePers == 1) {
         this.user.typeDoc = 1;
@@ -2115,6 +2113,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       } else {
         this.enviromental.typeDoc = 2;
       }
+    },
+    addEnviromental: function addEnviromental() {
+      var _this3 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        var obj, result;
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              obj = {
+                user: _this3.user,
+                enviromental: _this3.enviromental
+              };
+              _context2.next = 3;
+              return _services_services__WEBPACK_IMPORTED_MODULE_0__["default"].addNewInfo('/denuncia-ambiental/add-enviromental', obj);
+            case 3:
+              result = _context2.sent;
+              console.log(result);
+            case 5:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2);
+      }))();
     }
   }
 });
@@ -2173,7 +2194,7 @@ var render = function render() {
     }],
     staticClass: "form-select",
     on: {
-      change: [function ($event) {
+      change: function change($event) {
         var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
           return o.selected;
         }).map(function (o) {
@@ -2181,7 +2202,7 @@ var render = function render() {
           return val;
         });
         _vm.$set(_vm.user, "idTypeEnviromental", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-      }, _vm.typeEnviromental]
+      }
     }
   }, [_c("option", {
     attrs: {
@@ -2647,20 +2668,20 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.user.obt_resp,
-      expression: "user.obt_resp"
+      value: _vm.user.resp_previa,
+      expression: "user.resp_previa"
     }],
     staticClass: "form-control",
     attrs: {
       type: "text"
     },
     domProps: {
-      value: _vm.user.obt_resp
+      value: _vm.user.resp_previa
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.user, "obt_resp", $event.target.value);
+        _vm.$set(_vm.user, "resp_previa", $event.target.value);
       }
     }
   })])])]), _vm._v(" "), _c("div", {
@@ -3450,7 +3471,7 @@ var render = function render() {
     staticClass: "btn btn-primary",
     on: {
       click: function click($event) {
-        return _vm.next();
+        return _vm.addEnviromental();
       }
     }
   }, [_vm._v("Registrar")])])])])])])]);
@@ -61227,8 +61248,43 @@ var getShowInfo = /*#__PURE__*/function () {
     return _ref.apply(this, arguments);
   };
 }();
+var addNewInfo = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(url, obj) {
+    var result, response;
+    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+      while (1) switch (_context2.prev = _context2.next) {
+        case 0:
+          _context2.prev = 0;
+          result = [];
+          _context2.next = 4;
+          return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, obj);
+        case 4:
+          response = _context2.sent;
+          result.push(response.data);
+          return _context2.abrupt("return", {
+            status: true,
+            result: result
+          });
+        case 9:
+          _context2.prev = 9;
+          _context2.t0 = _context2["catch"](0);
+          return _context2.abrupt("return", {
+            status: false,
+            result: _context2.t0.response.data.errors
+          });
+        case 12:
+        case "end":
+          return _context2.stop();
+      }
+    }, _callee2, null, [[0, 9]]);
+  }));
+  return function addNewInfo(_x3, _x4) {
+    return _ref2.apply(this, arguments);
+  };
+}();
 /* harmony default export */ __webpack_exports__["default"] = ({
-  getShowInfo: getShowInfo
+  getShowInfo: getShowInfo,
+  addNewInfo: addNewInfo
 });
 
 /***/ }),
