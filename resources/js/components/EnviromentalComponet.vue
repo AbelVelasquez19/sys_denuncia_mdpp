@@ -9,84 +9,101 @@
                             <div class="col-md-4">
                                 <label for="basic-url" class="form-label">Tipo de Denunciante</label>
                                 <div class="input-group mb-3">
-                                    <select name="" id="" class="form-select">
-                                        <option value="" selected disabled>--Seleccionar--</option>
+                                    <select class="form-select" v-model="user.idTypeEnviromental" @change="typeEnviromental">
                                         <option value="1">Anónimo</option>
                                         <option value="2">Con reserva de datos</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4" v-if="user.idTypeEnviromental==2">
                                 <label for="basic-url" class="form-label">Tipo Persona</label>
                                 <div class="input-group mb-3">
-                                    <select name="" id="" class="form-select">
-                                        <option value="" selected disabled>--Seleccionar--</option>
+                                    <select class="form-select" v-model="user.typePers" @change="changeTypeDocuUser">
                                         <option value="1">Natural</option>
                                         <option value="2">Jurídica</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4" v-if="user.idTypeEnviromental==2">
                                 <label for="basic-url" class="form-label">Tipo de Doc.</label>
                                 <div class="input-group mb-3">
-                                    <select name="" id="" class="form-select">
-                                        <option value="" selected disabled>--Seleccionar--</option>
+                                    <select class="form-select" v-model="user.typeDoc">
                                         <option value="1">DNI</option>
                                         <option value="2">RUC</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label for="basic-url" class="form-label">N°. Doc.</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" v-model="user.numDoc" @blur="searchUser()">
+                        <div class="row" v-if="user.idTypeEnviromental==2">
+                            <div class="col-md-12" v-show="user.typePers==1">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label for="basic-url" class="form-label">N°. Doc.</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" v-model="user.numDoc" @blur="searchUser()">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="basic-url" class="form-label">Apellido Paterno</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" v-model="user.lastName">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="basic-url" class="form-label">Apellido Materno</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" v-model="user.mothersLastName">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="basic-url" class="form-label">Nombres</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" v-model="user.name">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <label for="basic-url" class="form-label">Apellido Paterno</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="basic-url" class="form-label">Apellido Materno</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="basic-url" class="form-label">Nombres</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" v-model="user.name">
+                            <div class="col-md-12" v-show="user.typePers==2">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label for="basic-url" class="form-label">N°. RUC</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" v-model="user.numRuc" @blur="searchUser()">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <label for="basic-url" class="form-label">Razón Social</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" v-model="user.razonSocial">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" v-if="user.idTypeEnviromental==2">
                             <div class="col-md-4">
                                 <label for="basic-url" class="form-label">Telefono</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" v-model="user.phone">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <label for="basic-url" class="form-label">Celular</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" v-model="user.cellPhone">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <label for="basic-url" class="form-label">Correo</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" v-model="user.gmail">
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" v-if="user.idTypeEnviromental==2">
                             <div class="col-md-12">
-                                <label for="basic-url" class="form-label">Descripcion</label>
-                                <input type="text" class="form-control">
+                                <label for="basic-url" class="form-label">Dirección</label>
+                                <input type="text" class="form-control" v-model="user.address">
                             </div>
                         </div>
                     </fieldset>
@@ -96,17 +113,17 @@
                             <div class="col-md-6">
                                 <label for="basic-url" class="form-label">¿Ha realizado denuncia previa?</label>
                                 <div class="input-group mb-3">
-                                    <select name="" id="" class="form-select">
+                                    <select class="form-select" v-model="user.denun_previa">
                                         <option value="" selected disabled>--Seleccionar--</option>
-                                        <option value="1">NO</option>
-                                        <option value="2">SI</option>
+                                        <option value="NO">NO</option>
+                                        <option value="SI">SI</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="basic-url" class="form-label">¿Ante que entidad?</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" v-model="user.obt_resp">
                                 </div>
                             </div>
                         </div>
@@ -114,17 +131,17 @@
                             <div class="col-md-6">
                                 <label for="basic-url" class="form-label">¿Obtuvo despuesta?</label>
                                 <div class="input-group mb-3">
-                                    <select name="" id="" class="form-select">
+                                    <select class="form-select" v-model="user.obt_resp">
                                         <option value="" selected disabled>--Seleccionar--</option>
-                                        <option value="1">NO</option>
-                                        <option value="2">SI</option>
+                                        <option value="NO">NO</option>
+                                        <option value="SI">SI</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="basic-url" class="form-label">¿Cuál fue la respuesta?</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" v-model="user.resp_obt_resp">
                                 </div>
                             </div>
                         </div>
@@ -143,84 +160,101 @@
                             <div class="col-md-4">
                                 <label for="basic-url" class="form-label">Tipo de Denunciante</label>
                                 <div class="input-group mb-3">
-                                    <select name="" id="" class="form-select">
-                                        <option value="" selected disabled>--Seleccionar--</option>
+                                    <select class="form-select" v-model="enviromental.idTypeEnviromental">
                                         <option value="1">Anónimo</option>
                                         <option value="2">Con reserva de datos</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4" v-if="enviromental.idTypeEnviromental==2">
                                 <label for="basic-url" class="form-label">Tipo Persona</label>
                                 <div class="input-group mb-3">
-                                    <select name="" id="" class="form-select">
-                                        <option value="" selected disabled>--Seleccionar--</option>
+                                    <select class="form-select" v-model="enviromental.typePers" @change="changeTypeDocuEnviromental">
                                         <option value="1">Natural</option>
                                         <option value="2">Jurídica</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4" v-if="enviromental.idTypeEnviromental==2">
                                 <label for="basic-url" class="form-label">Tipo de Doc.</label>
                                 <div class="input-group mb-3">
-                                    <select name="" id="" class="form-select">
-                                        <option value="" selected disabled>--Seleccionar--</option>
+                                    <select class="form-select" v-model="enviromental.typeDoc">
                                         <option value="1">DNI</option>
                                         <option value="2">RUC</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label for="basic-url" class="form-label">N°. Doc.</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control">
+                        <div class="row" v-if="enviromental.idTypeEnviromental==2">
+                            <div class="col-md-12" v-show="enviromental.typePers==1">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label for="basic-url" class="form-label">N°. Doc.</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" v-model="enviromental.numDoc">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="basic-url" class="form-label">Apellido Paterno</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" v-model="enviromental.lastName">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="basic-url" class="form-label">Apellido Materno</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" v-model="enviromental.mothersLastName">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="basic-url" class="form-label">Nombres</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" v-model="enviromental.name">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <label for="basic-url" class="form-label">Apellido Paterno</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="basic-url" class="form-label">Apellido Materno</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="basic-url" class="form-label">Nombres</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control">
+                            <div class="col-md-12" v-show="enviromental.typePers==2">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label for="basic-url" class="form-label">N°. RUC</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" v-model="enviromental.numRuc">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <label for="basic-url" class="form-label">Razon Social</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" v-model="enviromental.razonSocial">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" v-if="enviromental.idTypeEnviromental==2">
                             <div class="col-md-4">
                                 <label for="basic-url" class="form-label">Telefono</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" v-model="enviromental.phone">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <label for="basic-url" class="form-label">Celular</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" v-model="enviromental.cellPhone">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <label for="basic-url" class="form-label">Correo</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" v-model="enviromental.gmail">
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" v-if="enviromental.idTypeEnviromental==2">
                             <div class="col-md-12">
-                                <label for="basic-url" class="form-label">Descripcion</label>
-                                <input type="text" class="form-control">
+                                <label for="basic-url" class="form-label">Dirección</label>
+                                <input type="text" class="form-control" v-model="enviromental.address">
                             </div>
                         </div>
                     </fieldset>
@@ -230,26 +264,26 @@
                             <div class="col-md-4">
                                 <label for="basic-url" class="form-label">Dirección</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" v-model="enviromental.addres_ubi">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <label for="basic-url" class="form-label">Referencia</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" v-model="enviromental.references">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <label for="basic-url" class="form-label">Cargar archivos de capacidad 2MB(MAX)</label>
                                 <div class="input-group mb-3">
-                                    <input type="file" class="form-control">
+                                    <input type="file" class="form-control" @change="handleFileSelect">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <label for="basic-url" class="form-label">Descripcion</label>
                             <div class="col-md-12">
-                                <textarea name="" id="" cols="30" rows="3" class="form-control"></textarea>
+                                <textarea cols="30" rows="3" class="form-control" v-model="enviromental.description"></textarea>
                             </div>
                         </div>
                         <div class="row" style="display: none;">
@@ -332,7 +366,6 @@
         LControlLayers } 
     from 'vue2-leaflet';
     import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
-import { use } from 'vue/types/umd';
     export default {
         name:'enviromentalComponet',
         props:{
@@ -393,8 +426,47 @@ import { use } from 'vue/types/umd';
                     },
                 ],
                 user:{
+                    idTypeEnviromental:1,
+                    typePers:'1',
+                    typeDoc:'1',
                     numDoc:'',
-                    name:''
+                    numRuc:'',
+                    razonSocial:'',
+                    name:'',
+                    lastName:'',
+                    mothersLastName:'',
+                    phone:'',
+                    cellPhone:'',
+                    gmail:'',
+                    address:'',
+                    denun_previa:'',
+                    resp_previa:'',
+                    obt_resp:'',
+                    resp_obt_resp:'',
+                },
+                enviromental:{
+                    idTypeEnviromental:1,
+                    typePers:'1',
+                    typeDoc:'1',
+                    numDoc:'',
+                    numRuc:'',
+                    razonSocial:'',
+                    name:'',
+                    lastName:'',
+                    mothersLastName:'',
+                    phone:'',
+                    cellPhone:'',
+                    gmail:'',
+                    address:'',
+                    addres_ubi:'',
+                    references:'',
+                    files:'',
+                    description:'',
+                },
+                idTypeEnviromental:1,
+                handleFileSelect(event){
+                    const selectedFiles = event.target.files;
+                    this.environmental.files = selectedFiles;
                 }
             }
         },
@@ -417,9 +489,62 @@ import { use } from 'vue/types/umd';
                 this.NumerNext = 1;
             },
             async searchUser(){
-                const result = await Services.getShowInfo('/denuncia-ambiental/user-search', this.user.numDoc);
-                if(result.status){
-                    this.user.name=result.data[0].no_usrio
+                let obj = {
+                    numDoc : this.user.numDoc,
+                    typeDoc : this.user.typeDoc,
+                }
+                const result = await Services.getShowInfo('/denuncia-ambiental/user-search', obj);
+                console.log(result)
+                if(result.type=='DNI'){
+                    if(result.status){
+                        console.log(result.data[0])
+                        this.user.numDoc=result.data[0].nu_docu;
+                        this.user.name=result.data[0].no_usrio;
+                        this.user.lastName=result.data[0].ap_pate;
+                        this.user.mothersLastName=result.data[0].ap_mate;
+                        this.user.phone=result.data[0].nu_tele;
+                        this.user.cellPhone=result.data[0].nu_tele;
+                        this.user.gmail=result.data[0].de_mail;
+                        this.user.address=result.data[0].de_dire;
+                    }else{
+                        this.clearInput();
+                    }
+                }else{
+                    if(result.status){
+                        this.user.numRuc=result.data[0].nu_docu;
+                        this.user.razonSocial=result.data[0].no_crto;
+                        this.user.cellPhone=result.data[0].nu_tele;
+                        this.user.gmail=result.data[0].de_mail;
+                        this.user.address=result.data[0].de_dire;
+                    }else{
+                        this.clearInput();
+                    }
+                }
+            },
+            clearInput(){
+                this.user.numDoc="";
+                this.user.name="";
+                this.user.lastName="";
+                this.user.mothersLastName="";
+                this.user.phone="";
+                this.user.cellPhone="";
+                this.user.gmail="";
+            },
+            typeEnviromental(){
+
+            },
+            changeTypeDocuUser(){
+                if(this.user.typePers==1){
+                    this.user.typeDoc = 1;
+                }else{
+                    this.user.typeDoc = 2;
+                }
+            },
+            changeTypeDocuEnviromental(){
+                if(this.enviromental.typePers==1){
+                    this.enviromental.typeDoc = 1;
+                }else{
+                    this.enviromental.typeDoc = 2;
                 }
             }
         }
