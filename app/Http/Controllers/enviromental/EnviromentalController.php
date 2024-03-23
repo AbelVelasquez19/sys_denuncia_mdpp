@@ -143,10 +143,6 @@ class EnviromentalController extends Controller
                 $cod_user_envirometantal = 0;
             }
 
-            if ($request->hasFile('enviromental_files')) {
-                $file = $request->file('enviromental_files');
-                $newNameFile = 'enviromental-'.$request->input('sworn_declaration_id').'.'. $file->getClientOriginalExtension();
-            }
             $year = date('Y');
             $result = DB::connection('sigtram')->select("SELECT COALESCE((SELECT MAX(CAST(numero AS INT)) + 1 FROM denuncias.p_dnncias_a WHERE annio = '$year'), 1) AS num_max");
             return $result[0]->num_max;
@@ -171,8 +167,20 @@ class EnviromentalController extends Controller
             $enviromental->annio=$year;
             $enviromental->latitud=$request->input('enviromental_latitud');
             $enviromental->longitud=$request->input('enviromental_longitud');
+            $enviromental->save();
             $enviromental_id = $enviromental->id;
-            if($enviromental->save()){
+
+             if ($request->hasFile('enviromental_files')) {
+                 $search = enviromental::where('id','=',$enviromental_id)->first();
+                 if($search){
+                    $file = $request->file('enviromental_files');
+                    $newNameFile = 'enviromental-'.$enviromental_id.'.'. $file->getClientOriginalExtension();
+                    $pathName = 'enviromental/files/'.date('Y-m-d');
+                    $path = $file->storeAs($pathName, $newNameFile, 'public');
+                    $pdfUrl = asset(Storage::url($path));
+                }
+            }
+            if(){
                 return response()->json([
                     'status'=>true,
                     'cod_eviro'=>$enviromental_id,
