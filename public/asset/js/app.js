@@ -2058,7 +2058,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               if (result.type == 'DNI') {
                 if (result.status) {
                   console.log(result.data[0]);
-                  /* this.user.numDoc=result.data[0].nu_docu; */
                   _this2.user.name = result.data[0].no_usrio;
                   _this2.user.lastName = result.data[0].ap_pate;
                   _this2.user.mothersLastName = result.data[0].ap_mate;
@@ -2067,17 +2066,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this2.user.gmail = result.data[0].de_mail;
                   _this2.user.address = result.data[0].de_dire;
                 } else {
-                  _this2.clearInput();
+                  _this2.clearInputUser();
                 }
               } else {
                 if (result.status) {
-                  /*  this.user.numRuc=result.data[0].nu_docu; */
                   _this2.user.razonSocial = result.data[0].no_crto;
                   _this2.user.cellPhone = result.data[0].nu_tele;
                   _this2.user.gmail = result.data[0].de_mail;
                   _this2.user.address = result.data[0].de_dire;
                 } else {
-                  _this2.clearInput();
+                  _this2.clearInputUser();
                 }
               }
             case 5:
@@ -2087,18 +2085,71 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    clearInput: function clearInput() {
-      this.user.numDoc = "";
+    searchUserEnviromental: function searchUserEnviromental() {
+      var _this3 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        var obj, result;
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              obj = {
+                numDoc: _this3.enviromental.numDoc,
+                numRuc: _this3.enviromental.numRuc,
+                typeDoc: _this3.enviromental.typeDoc
+              };
+              _context2.next = 3;
+              return _services_services__WEBPACK_IMPORTED_MODULE_0__["default"].getShowInfo('/denuncia-ambiental/user-search', obj);
+            case 3:
+              result = _context2.sent;
+              if (result.type == 'DNI') {
+                if (result.status) {
+                  console.log(result.data[0]);
+                  _this3.enviromental.name = result.data[0].no_usrio;
+                  _this3.enviromental.lastName = result.data[0].ap_pate;
+                  _this3.enviromental.mothersLastName = result.data[0].ap_mate;
+                  _this3.enviromental.phone = result.data[0].nu_tele;
+                  _this3.enviromental.cellPhone = result.data[0].nu_tele;
+                  _this3.enviromental.gmail = result.data[0].de_mail;
+                  _this3.enviromental.address = result.data[0].de_dire;
+                } else {
+                  _this3.clearInputEnviro();
+                }
+              } else {
+                if (result.status) {
+                  _this3.enviromental.razonSocial = result.data[0].no_crto;
+                  _this3.enviromental.cellPhone = result.data[0].nu_tele;
+                  _this3.enviromental.gmail = result.data[0].de_mail;
+                  _this3.enviromental.address = result.data[0].de_dire;
+                } else {
+                  _this3.clearInputEnviro();
+                }
+              }
+            case 5:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2);
+      }))();
+    },
+    clearInputUser: function clearInputUser() {
       this.user.name = "";
       this.user.lastName = "";
       this.user.mothersLastName = "";
       this.user.phone = "";
       this.user.cellPhone = "";
       this.user.gmail = "";
+      this.user.address = "";
+    },
+    clearInputEnviro: function clearInputEnviro() {
+      this.enviromental.razonSocial = "";
+      this.enviromental.phone = "";
+      this.enviromental.cellPhone = "";
+      this.enviromental.gmail = "";
+      this.enviromental.address = "";
     },
     handleFileSelect: function handleFileSelect(event) {
-      var selectedFiles = event.target.files;
-      this.environmental.files = selectedFiles;
+      var selectedFiles = event.target.files[0];
+      this.enviromental.files = selectedFiles;
     },
     changeTypeDocuUser: function changeTypeDocuUser() {
       if (this.user.typePers == 1) {
@@ -2115,26 +2166,59 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     },
     addEnviromental: function addEnviromental() {
-      var _this3 = this;
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-        var obj, result;
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) switch (_context2.prev = _context2.next) {
+      var _this4 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+        var formData, result;
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
             case 0:
-              obj = {
-                user: _this3.user,
-                enviromental: _this3.enviromental
-              };
-              _context2.next = 3;
-              return _services_services__WEBPACK_IMPORTED_MODULE_0__["default"].addNewInfo('/denuncia-ambiental/add-enviromental', obj);
-            case 3:
-              result = _context2.sent;
+              formData = new FormData();
+              formData.append('user_idTypeEnviromental', _this4.user.idTypeEnviromental);
+              formData.append('user_typePers', _this4.user.typePers);
+              formData.append('user_typeDoc', _this4.user.typeDoc);
+              formData.append('user_numDoc', _this4.user.numDoc);
+              formData.append('user_numRuc', _this4.user.numRuc);
+              formData.append('user_razonSocial', _this4.user.razonSocial);
+              formData.append('user_name', _this4.user.name);
+              formData.append('user_lastName', _this4.user.lastName);
+              formData.append('user_mothersLastName', _this4.user.mothersLastName);
+              formData.append('user_phone', _this4.user.phone);
+              formData.append('user_cellPhone', _this4.user.cellPhone);
+              formData.append('user_gmail', _this4.user.gmail);
+              formData.append('user_address', _this4.user.address);
+              formData.append('user_denun_previa', _this4.user.denun_previa);
+              formData.append('user_resp_previa', _this4.user.resp_previa);
+              formData.append('user_obt_resp', _this4.user.obt_resp);
+              formData.append('user_resp_obt_resp', _this4.user.resp_obt_resp);
+              formData.append('enviromental_idTypeEnviromental', _this4.enviromental.idTypeEnviromental);
+              formData.append('enviromental_typePers', _this4.enviromental.typePers);
+              formData.append('enviromental_typeDoc', _this4.enviromental.typeDoc);
+              formData.append('enviromental_numDoc', _this4.enviromental.numDoc);
+              formData.append('enviromental_numRuc', _this4.enviromental.numRuc);
+              formData.append('enviromental_razonSocial', _this4.enviromental.razonSocial);
+              formData.append('enviromental_name', _this4.enviromental.name);
+              formData.append('enviromental_lastName', _this4.enviromental.lastName);
+              formData.append('enviromental_mothersLastName', _this4.enviromental.mothersLastName);
+              formData.append('enviromental_phone', _this4.enviromental.phone);
+              formData.append('enviromental_cellPhone', _this4.enviromental.cellPhone);
+              formData.append('enviromental_gmail', _this4.enviromental.gmail);
+              formData.append('enviromental_address', _this4.enviromental.address);
+              formData.append('enviromental_addres_ubi', _this4.enviromental.addres_ubi);
+              formData.append('enviromental_references', _this4.enviromental.references);
+              formData.append('enviromental_files', _this4.enviromental.files);
+              formData.append('enviromental_description', _this4.enviromental.description);
+              formData.append('enviromental_longitud', _this4.markers[0].position.lng);
+              formData.append('enviromental_latitud', _this4.markers[0].position.lat);
+              _context3.next = 39;
+              return _services_services__WEBPACK_IMPORTED_MODULE_0__["default"].addNewInfo('/denuncia-ambiental/add-enviromental', formData);
+            case 39:
+              result = _context3.sent;
               console.log(result);
-            case 5:
+            case 41:
             case "end":
-              return _context2.stop();
+              return _context3.stop();
           }
-        }, _callee2);
+        }, _callee3);
       }))();
     }
   }
@@ -2929,6 +3013,7 @@ var render = function render() {
       value: _vm.enviromental.numDoc
     },
     on: {
+      blur: _vm.searchUserEnviromental,
       input: function input($event) {
         if ($event.target.composing) return;
         _vm.$set(_vm.enviromental, "numDoc", $event.target.value);
@@ -3055,6 +3140,7 @@ var render = function render() {
       value: _vm.enviromental.numRuc
     },
     on: {
+      blur: _vm.searchUserEnviromental,
       input: function input($event) {
         if ($event.target.composing) return;
         _vm.$set(_vm.enviromental, "numRuc", $event.target.value);
