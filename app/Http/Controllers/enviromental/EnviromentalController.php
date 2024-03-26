@@ -9,6 +9,7 @@ use App\Models\system\User;
 use App\Models\system\NaturalPerson;
 use App\Models\system\LegalPerson;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 class EnviromentalController extends Controller
 {
     public function addEnviromental(Request $request){
@@ -145,7 +146,6 @@ class EnviromentalController extends Controller
 
             $year = date('Y');
             $result = DB::connection('sigtram')->select("SELECT COALESCE((SELECT MAX(CAST(numero AS INT)) + 1 FROM denuncias.p_dnncias_a WHERE annio = '$year'), 1) AS num_max");
-            return $result[0]->num_max;
 
             $enviromental = new enviromental();
             $enviromental->tipo_denun_denunciante=$request->input('user_idTypeEnviromental');
@@ -170,7 +170,7 @@ class EnviromentalController extends Controller
             $enviromental->save();
             $enviromental_id = $enviromental->id;
 
-             if ($request->hasFile('enviromental_files')) {
+            if($request->hasFile('enviromental_files')) {
                  $search = enviromental::where('id','=',$enviromental_id)->first();
                  if($search){
                     $file = $request->file('enviromental_files');
@@ -178,25 +178,25 @@ class EnviromentalController extends Controller
                     $pathName = 'enviromental/files/'.date('Y-m-d');
                     $path = $file->storeAs($pathName, $newNameFile, 'public');
                     $pdfUrl = asset(Storage::url($path));
+                    $search->archivo = $path;
+                    $search->save();
                 }
             }
-            if(){
-                return response()->json([
-                    'status'=>true,
-                    'cod_eviro'=>$enviromental_id,
-                    'cod_user'=>$cod_user,
-                    'cod_user_envirometantal'=>$cod_user_envirometantal
-                ]);
-            }
-             /*   $enviromental->archivo=;
-             */
-           // 72966141
 
-            /* DB::commit(); */
-           
-
+            return response()->json([
+                'status'=>true,
+                'cod_eviro'=>$enviromental_id,
+                'cod_user'=>$cod_user,
+                'cod_user_envirometantal'=>$cod_user_envirometantal
+            ]);
+            
         } catch (\Throwable $th) {
-            /* DB::rollBack(); */
+            return response()->json([
+                'status'=>true,
+                'cod_eviro'=>0,
+                'cod_user'=>0,
+                'cod_user_envirometantal'=>0
+            ]);
             throw $th;
         }
     }
