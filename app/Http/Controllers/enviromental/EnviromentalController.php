@@ -144,8 +144,8 @@ class EnviromentalController extends Controller
                 $cod_user_envirometantal = 0;
             }
 
-            $year = date('Y');
-            $result = DB::connection('sigtram')->select("SELECT COALESCE((SELECT MAX(CAST(numero AS INT)) + 1 FROM denuncias.p_dnncias_a WHERE annio = '$year'), 1) AS num_max");
+            /* $year = date('Y');
+            $result = DB::connection('sigtram')->select("SELECT COALESCE((SELECT MAX(CAST(numero AS INT)) + 1 FROM denuncias.p_dnncias_a WHERE annio = '$year'), 1) AS num_max"); */
 
             $enviromental = new enviromental();
             $enviromental->tipo_denun_denunciante=$request->input('user_idTypeEnviromental');
@@ -163,8 +163,8 @@ class EnviromentalController extends Controller
             $enviromental->ubicacion=$request->input('enviromental_addres_ubi');
             $enviromental->referencia=$request->input('enviromental_references');
             $enviromental->descripcion=$request->input('enviromental_description');
-            $enviromental->numero = $result[0]->num_max;
-            $enviromental->annio=$year;
+            /* $enviromental->numero = $result[0]->num_max;
+            $enviromental->annio=$year; */
             $enviromental->latitud=$request->input('enviromental_latitud');
             $enviromental->longitud=$request->input('enviromental_longitud');
             $enviromental->save();
