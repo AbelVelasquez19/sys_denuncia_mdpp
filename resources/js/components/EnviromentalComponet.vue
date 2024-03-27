@@ -191,7 +191,7 @@ enviromental<template>
                                     <div class="col-md-3">
                                         <label for="basic-url" class="form-label">N°. Doc.</label>
                                         <div class="input-group mb-3">
-                                            <input type="text" class="form-control" v-model="enviromental.numDoc">
+                                            <input type="text" class="form-control" v-model="enviromental.numDoc" @blur="searchUserEnviromental">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -219,7 +219,7 @@ enviromental<template>
                                     <div class="col-md-3">
                                         <label for="basic-url" class="form-label">N°. RUC</label>
                                         <div class="input-group mb-3">
-                                            <input type="text" class="form-control" v-model="enviromental.numRuc">
+                                            <input type="text" class="form-control" v-model="enviromental.numRuc" @blur="searchUserEnviromental">
                                         </div>
                                     </div>
                                     <div class="col-md-9">
@@ -493,7 +493,6 @@ enviromental<template>
                 if(result.type=='DNI'){
                     if(result.status){
                         console.log(result.data[0])
-                        /* this.user.numDoc=result.data[0].nu_docu; */
                         this.user.name=result.data[0].no_usrio;
                         this.user.lastName=result.data[0].ap_pate;
                         this.user.mothersLastName=result.data[0].ap_mate;
@@ -502,32 +501,69 @@ enviromental<template>
                         this.user.gmail=result.data[0].de_mail;
                         this.user.address=result.data[0].de_dire;
                     }else{
-                        this.clearInput();
+                        this.clearInputUser();
                     }
                 }else{
                     if(result.status){
-                       /*  this.user.numRuc=result.data[0].nu_docu; */
                         this.user.razonSocial=result.data[0].no_crto;
                         this.user.cellPhone=result.data[0].nu_tele;
                         this.user.gmail=result.data[0].de_mail;
                         this.user.address=result.data[0].de_dire;
                     }else{
-                        this.clearInput();
+                        this.clearInputUser();
                     }
                 }
             },
-            clearInput(){
-                this.user.numDoc="";
+            async searchUserEnviromental(){
+                let obj = {
+                    numDoc : this.enviromental.numDoc,
+                    numRuc : this.enviromental.numRuc,
+                    typeDoc : this.enviromental.typeDoc,
+                }
+                const result = await Services.getShowInfo('/denuncia-ambiental/user-search', obj);
+                if(result.type=='DNI'){
+                    if(result.status){
+                        console.log(result.data[0])
+                        this.enviromental.name=result.data[0].no_usrio;
+                        this.enviromental.lastName=result.data[0].ap_pate;
+                        this.enviromental.mothersLastName=result.data[0].ap_mate;
+                        this.enviromental.phone=result.data[0].nu_tele;
+                        this.enviromental.cellPhone=result.data[0].nu_tele;
+                        this.enviromental.gmail=result.data[0].de_mail;
+                        this.enviromental.address=result.data[0].de_dire;
+                    }else{
+                        this.clearInputEnviro();
+                    }
+                }else{
+                    if(result.status){
+                        this.enviromental.razonSocial=result.data[0].no_crto;
+                        this.enviromental.cellPhone=result.data[0].nu_tele;
+                        this.enviromental.gmail=result.data[0].de_mail;
+                        this.enviromental.address=result.data[0].de_dire;
+                    }else{
+                        this.clearInputEnviro();
+                    }
+                }
+            },
+            clearInputUser(){
                 this.user.name="";
                 this.user.lastName="";
                 this.user.mothersLastName="";
                 this.user.phone="";
                 this.user.cellPhone="";
                 this.user.gmail="";
+                this.user.address="";
+            },
+            clearInputEnviro(){
+                this.enviromental.razonSocial="";
+                this.enviromental.phone="";
+                this.enviromental.cellPhone="";
+                this.enviromental.gmail="";
+                this.enviromental.address="";
             },
             handleFileSelect(event){
-                const selectedFiles = event.target.files;
-                this.environmental.files = selectedFiles;
+                const selectedFiles = event.target.files[0];
+                this.enviromental.files = selectedFiles;
             },
             changeTypeDocuUser(){
                 if(this.user.typePers==1){
@@ -544,11 +580,47 @@ enviromental<template>
                 }
             },
             async addEnviromental(){
-                let obj = {
-                    user : this.user,
-                    enviromental : this.enviromental
-                }
-                const result = await Services.addNewInfo('/denuncia-ambiental/add-enviromental', obj);
+                const formData = new FormData();
+                formData.append('user_idTypeEnviromental', this.user.idTypeEnviromental);
+                formData.append('user_typePers',this.user.typePers);
+                formData.append('user_typeDoc',this.user.typeDoc);
+                formData.append('user_numDoc',this.user.numDoc);
+                formData.append('user_numRuc',this.user.numRuc);
+                formData.append('user_razonSocial',this.user.razonSocial);
+                formData.append('user_name',this.user.name);
+                formData.append('user_lastName',this.user.lastName);
+                formData.append('user_mothersLastName',this.user.mothersLastName);
+                formData.append('user_phone',this.user.phone);
+                formData.append('user_cellPhone',this.user.cellPhone);
+                formData.append('user_gmail',this.user.gmail);
+                formData.append('user_address',this.user.address);
+                formData.append('user_denun_previa',this.user.denun_previa);
+                formData.append('user_resp_previa',this.user.resp_previa);
+                formData.append('user_obt_resp',this.user.obt_resp);
+                formData.append('user_resp_obt_resp',this.user.resp_obt_resp);
+
+                formData.append('enviromental_idTypeEnviromental',this.enviromental.idTypeEnviromental);
+                formData.append('enviromental_typePers',this.enviromental.typePers);
+                formData.append('enviromental_typeDoc',this.enviromental.typeDoc);
+                formData.append('enviromental_numDoc',this.enviromental.numDoc);
+                formData.append('enviromental_numRuc',this.enviromental.numRuc);
+                formData.append('enviromental_razonSocial',this.enviromental.razonSocial);
+                formData.append('enviromental_name',this.enviromental.name);
+                formData.append('enviromental_lastName',this.enviromental.lastName);
+                formData.append('enviromental_mothersLastName',this.enviromental.mothersLastName);
+                formData.append('enviromental_phone',this.enviromental.phone);
+                formData.append('enviromental_cellPhone',this.enviromental.cellPhone);
+                formData.append('enviromental_gmail',this.enviromental.gmail);
+                formData.append('enviromental_address',this.enviromental.address);
+                formData.append('enviromental_addres_ubi',this.enviromental.addres_ubi);
+                formData.append('enviromental_references',this.enviromental.references);
+                formData.append('enviromental_files',this.enviromental.files);
+                formData.append('enviromental_description',this.enviromental.description);
+                formData.append('enviromental_longitud',this.markers[0].position.lng);
+                formData.append('enviromental_latitud',this.markers[0].position.lat);
+
+
+                const result = await Services.addNewInfo('/denuncia-ambiental/add-enviromental', formData);
                 console.log(result)
             }
         }
