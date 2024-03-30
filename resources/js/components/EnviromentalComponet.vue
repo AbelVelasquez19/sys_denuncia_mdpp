@@ -147,7 +147,7 @@ enviromental<template>
                         </div>
                     </fieldset>
                     <div class="row mt-2" v-show="NumerNext==1">
-                        <div class="col-md-4 offset-8 d-flex justify-content-end">
+                        <div class="col-md-12  d-flex justify-content-end">
                             <button class="btn btn-primary" @click="next()">Siguiente <i class="fa-solid fa-arrow-right"></i></button>
                         </div>
                     </div>
@@ -338,7 +338,7 @@ enviromental<template>
                         </div>
                     </fieldset>
                     <div class="row mt-4" v-show="NumerNext==2">
-                        <div class="col-md-4 offset-8 d-flex justify-content-end">
+                        <div class="col-md-12  d-flex justify-content-end">
                             <button class="btn btn-info mx-2" @click="previus()">Atras <i class="fa-solid fa-arrow-left"></i></button>
                             <button class="btn btn-primary" @click="addEnviromental()">Registrar</button>
                         </div>
@@ -621,7 +621,48 @@ enviromental<template>
 
 
                 const result = await Services.addNewInfo('/denuncia-ambiental/add-enviromental', formData);
-                console.log(result)
+                console.log(result.status)
+                if(result.status){
+                    this.user={
+                        idTypeEnviromental:1,
+                        typePers:'1',
+                        typeDoc:'1',
+                        numDoc:'',
+                        numRuc:'',
+                        razonSocial:'',
+                        name:'',
+                        lastName:'',
+                        mothersLastName:'',
+                        phone:'',
+                        cellPhone:'',
+                        gmail:'',
+                        address:'',
+                        denun_previa:'',
+                        resp_previa:'',
+                        obt_resp:'',
+                        resp_obt_resp:'',
+                    },
+                    this.enviromental={
+                        idTypeEnviromental:1,
+                        typePers:'1',
+                        typeDoc:'1',
+                        numDoc:'',
+                        numRuc:'',
+                        razonSocial:'',
+                        name:'',
+                        lastName:'',
+                        mothersLastName:'',
+                        phone:'',
+                        cellPhone:'',
+                        gmail:'',
+                        address:'',
+                        addres_ubi:'',
+                        references:'',
+                        files:'',
+                        description:'',
+                    },
+                    this.NumerNext=1
+                }
             }
         }
     }

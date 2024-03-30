@@ -2213,8 +2213,47 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return _services_services__WEBPACK_IMPORTED_MODULE_0__["default"].addNewInfo('/denuncia-ambiental/add-enviromental', formData);
             case 39:
               result = _context3.sent;
-              console.log(result);
-            case 41:
+              console.log(result.status);
+              if (result.status) {
+                _this4.user = {
+                  idTypeEnviromental: 1,
+                  typePers: '1',
+                  typeDoc: '1',
+                  numDoc: '',
+                  numRuc: '',
+                  razonSocial: '',
+                  name: '',
+                  lastName: '',
+                  mothersLastName: '',
+                  phone: '',
+                  cellPhone: '',
+                  gmail: '',
+                  address: '',
+                  denun_previa: '',
+                  resp_previa: '',
+                  obt_resp: '',
+                  resp_obt_resp: ''
+                }, _this4.enviromental = {
+                  idTypeEnviromental: 1,
+                  typePers: '1',
+                  typeDoc: '1',
+                  numDoc: '',
+                  numRuc: '',
+                  razonSocial: '',
+                  name: '',
+                  lastName: '',
+                  mothersLastName: '',
+                  phone: '',
+                  cellPhone: '',
+                  gmail: '',
+                  address: '',
+                  addres_ubi: '',
+                  references: '',
+                  files: '',
+                  description: ''
+                }, _this4.NumerNext = 1;
+              }
+            case 42:
             case "end":
               return _context3.stop();
           }
@@ -2850,7 +2889,7 @@ var render = function render() {
     }],
     staticClass: "row mt-2"
   }, [_c("div", {
-    staticClass: "col-md-4 offset-8 d-flex justify-content-end"
+    staticClass: "col-md-12 d-flex justify-content-end"
   }, [_c("button", {
     staticClass: "btn btn-primary",
     on: {
@@ -3543,7 +3582,7 @@ var render = function render() {
     }],
     staticClass: "row mt-4"
   }, [_c("div", {
-    staticClass: "col-md-4 offset-8 d-flex justify-content-end"
+    staticClass: "col-md-12 d-flex justify-content-end"
   }, [_c("button", {
     staticClass: "btn btn-info mx-2",
     on: {

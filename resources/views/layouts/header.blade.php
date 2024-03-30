@@ -46,6 +46,19 @@
         padding: 0 1px !important;
         float: none !important;
     }
+    .btn-primary{
+        background: #dd4646  !important;
+        border-color: #bd4848 !important;
+    }
+    .text-primary{
+        color: #dd4646  !important;
+    }
+    .btn-primary:hover{
+        background: #852222 !important;
+    }
+    .link a{
+        color: #dd4646  !important;
+    }
 </style>
 <body>
     <!-- Spinner Start -->
@@ -61,7 +74,7 @@
             <div class="col-lg-7 px-5 text-start">
                 <div class="h-100 d-inline-flex align-items-center me-4">
                     <small class="fa fa-map-marker-alt text-primary me-2"></small>
-                    <small>Ca. 9 de Junio 100, Puente Piedra 15115</small>
+                    <small>Call. 9 de Junio 100, Puente Piedra 15115</small>
                 </div>
                 {{-- <div class="h-100 d-inline-flex align-items-center">
                     <small class="far fa-clock text-primary me-2"></small>
@@ -71,13 +84,13 @@
             <div class="col-lg-5 px-5 text-end">
                 <div class="h-100 d-inline-flex align-items-center me-4">
                     <small class="fa fa-phone-alt text-primary me-2"></small>
-                    <small>+012 345 6789</small>
+                    <small>(01) 219-6200</small>
                 </div>
                 <div class="h-100 d-inline-flex align-items-center mx-n2">
-                    <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-square btn-link rounded-0" href=""><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href="https://m.facebook.com/MunicipalidadPuentePiedra" target="_black"><i class="fab fa-facebook-f"></i></a>
+                    {{-- <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i class="fab fa-linkedin-in"></i></a> --}}
+                    <a class="btn btn-square btn-link rounded-0" href="https://www.instagram.com/municipalidad_puentepiedra/" target="_black"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
@@ -99,9 +112,9 @@
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="#" class="nav-item nav-link active">Inicio</a>
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Denuncia</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Denuncias</a>
                     <div class="dropdown-menu bg-light m-0">
-                        <a href="feature.html" class="dropdown-item">Denuncia Ambiental</a>
+                        <a href="{{route('index')}}" class="dropdown-item">Denuncia Ambiental</a>
                         <a href="appointment.html" class="dropdown-item">Denuncia Gou</a>
                     </div>
                 </div>

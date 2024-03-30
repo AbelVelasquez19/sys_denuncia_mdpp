@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::prefix('denuncia-ambiental')->group(function () {
-    Route::get('/', [DenunciaAmbiental::class,'index']);
+    Route::get('/', [DenunciaAmbiental::class,'index'])->name('index');
     Route::post('/user-search', [UserController::class,'getUser']);
     Route::post('/add-enviromental', [EnviromentalController::class,'addEnviromental']);
 });
