@@ -115,7 +115,7 @@
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Denuncias</a>
                     <div class="dropdown-menu bg-light m-0">
                         <a href="{{route('index')}}" class="dropdown-item">Denuncia Ambiental</a>
-                        <a href="appointment.html" class="dropdown-item">Denuncia Gou</a>
+                        <a href="{{route('infra-index')}}" class="dropdown-item">Denuncia Gou</a>
                     </div>
                 </div>
                {{--  <a href="contact.html" class="nav-item nav-link">Contact</a> --}}
