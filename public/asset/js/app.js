@@ -61510,8 +61510,8 @@ var addNewInfo = /*#__PURE__*/function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp7_4_14\htdocs\sys_denuncia_mdpp\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp7_4_14\htdocs\sys_denuncia_mdpp\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\denuncia\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\denuncia\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

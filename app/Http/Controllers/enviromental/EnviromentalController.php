@@ -192,7 +192,7 @@ class EnviromentalController extends Controller
             
         } catch (\Throwable $th) {
             return response()->json([
-                'status'=>true,
+                'status'=>false,
                 'cod_eviro'=>0,
                 'cod_user'=>0,
                 'cod_user_envirometantal'=>0
