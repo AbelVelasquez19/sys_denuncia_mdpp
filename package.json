@@ -24,6 +24,7 @@
         "leaflet.markercluster": "^1.5.3",
         "vue": "^2.7.16",
         "vue-leaflet": "^0.1.0",
+        "vue-toast-notification": "^1.0.1",
         "vue2-leaflet": "^2.7.1"
     }
 }

@@ -1982,7 +1982,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }],
       user: {
         idTypeEnviromental: 1,
-        typePers: '1',
+        typePers: 1,
         typeDoc: '1',
         numDoc: '',
         numRuc: '',
@@ -1994,9 +1994,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         cellPhone: '',
         gmail: '',
         address: '',
-        denun_previa: '',
+        denun_previa: 'NO',
         resp_previa: '',
-        obt_resp: '',
+        obt_resp: 'NO',
         resp_obt_resp: ''
       },
       enviromental: {
@@ -2031,6 +2031,48 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   methods: {
     next: function next() {
       var _this = this;
+      if (this.user.idTypeEnviromental == 2) {
+        if (this.user.typePers == 1) {
+          if (this.user.numDoc === '' || this.user.numDoc.length != 8) {
+            this.$toast.error('Numero Documento es requerido y/o debe tener solo 8 digitos');
+            return;
+          }
+          if (this.user.name == '') {
+            this.$toast.error('Nombre es requerido');
+            return;
+          }
+          if (this.user.lastName == '') {
+            this.$toast.error('Apellido paterno es requerido');
+            return;
+          }
+          if (this.user.mothersLastName == '') {
+            this.$toast.error('Apellido materno es requerido');
+            return;
+          }
+        }
+        if (this.user.typePers == 2) {
+          if (this.user.numRuc === '' || this.user.numRuc.length != 8) {
+            this.$toast.error('Numero Ruc es requerido y/o debe tener solo 11 digitos');
+            return;
+          }
+          if (this.user.razonSocial == '') {
+            this.$toast.error('Numero Ruc es requerido y/o debe tener solo 11 digitos');
+            return;
+          }
+        }
+      }
+      if (this.user.denun_previa == 'SI') {
+        if (this.user.resp_previa == '') {
+          this.$toast.error('Respuesta de denuncia previa es requedido');
+          return;
+        }
+      }
+      if (this.user.obt_resp == 'SI') {
+        if (this.user.resp_obt_resp == '') {
+          this.$toast.error('Respuesta de denuncia es requedido');
+          return;
+        }
+      }
       this.NumerNext = 2;
       setTimeout(function () {
         _this.$refs.mymap.mapObject.invalidateSize();
@@ -2039,6 +2081,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     previus: function previus() {
       this.NumerNext = 1;
     },
+    validateNumberAndLength: function validateNumberAndLength() {
+      if (this.user.idTypeEnviromental == 2) {}
+    },
     searchUser: function searchUser() {
       var _this2 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -2046,14 +2091,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
+              if (_this2.user.typePers == 1) {
+                _this2.user.numDoc = _this2.user.numDoc.replace(/\D/g, '');
+                if (_this2.user.numDoc.length >= 8) {
+                  _this2.user.numDoc = _this2.user.numDoc.slice(0, 8);
+                }
+              }
+              if (_this2.user.typePers == 2) {
+                _this2.user.numRuc = _this2.user.numRuc.replace(/\D/g, '');
+                if (_this2.user.numRuc.length >= 11) {
+                  _this2.user.numRuc = _this2.user.numRuc.slice(0, 11);
+                }
+              }
               obj = {
                 numDoc: _this2.user.numDoc,
                 numRuc: _this2.user.numRuc,
                 typeDoc: _this2.user.typeDoc
               };
-              _context.next = 3;
+              _context.next = 5;
               return _services_services__WEBPACK_IMPORTED_MODULE_0__["default"].getShowInfo('/denuncia-ambiental/user-search', obj);
-            case 3:
+            case 5:
               result = _context.sent;
               if (result.type == 'DNI') {
                 if (result.status) {
@@ -2078,7 +2135,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this2.clearInputUser();
                 }
               }
-            case 5:
+            case 7:
             case "end":
               return _context.stop();
           }
@@ -2172,6 +2229,74 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
+              if (!(_this4.enviromental.idTypeEnviromental == 2)) {
+                _context3.next = 21;
+                break;
+              }
+              if (!(_this4.enviromental.typePers == 1)) {
+                _context3.next = 14;
+                break;
+              }
+              if (!(_this4.enviromental.numDoc === '' || _this4.enviromental.numDoc.length != 8)) {
+                _context3.next = 5;
+                break;
+              }
+              _this4.$toast.error('Numero Documento es requerido y/o debe tener solo 8 digitos');
+              return _context3.abrupt("return");
+            case 5:
+              if (!(_this4.enviromental.name == '')) {
+                _context3.next = 8;
+                break;
+              }
+              _this4.$toast.error('Nombre es requerido');
+              return _context3.abrupt("return");
+            case 8:
+              if (!(_this4.enviromental.lastName == '')) {
+                _context3.next = 11;
+                break;
+              }
+              _this4.$toast.error('Apellido paterno es requerido');
+              return _context3.abrupt("return");
+            case 11:
+              if (!(_this4.enviromental.mothersLastName == '')) {
+                _context3.next = 14;
+                break;
+              }
+              _this4.$toast.error('Apellido materno es requerido');
+              return _context3.abrupt("return");
+            case 14:
+              if (!(_this4.enviromental.typePers == 2)) {
+                _context3.next = 21;
+                break;
+              }
+              if (!(_this4.enviromental.numRuc === '' || _this4.enviromental.numRuc.length != 8)) {
+                _context3.next = 18;
+                break;
+              }
+              _this4.$toast.error('Numero Ruc es requerido y/o debe tener solo 11 digitos');
+              return _context3.abrupt("return");
+            case 18:
+              if (!(_this4.enviromental.razonSocial == '')) {
+                _context3.next = 21;
+                break;
+              }
+              _this4.$toast.error('Numero Ruc es requerido y/o debe tener solo 11 digitos');
+              return _context3.abrupt("return");
+            case 21:
+              if (!(_this4.enviromental.addres_ubi == '')) {
+                _context3.next = 24;
+                break;
+              }
+              _this4.$toast.error('Es requerido lugar o dirección del hecho');
+              return _context3.abrupt("return");
+            case 24:
+              if (!(_this4.enviromental.description == '')) {
+                _context3.next = 27;
+                break;
+              }
+              _this4.$toast.error('Es requerido campo descripción');
+              return _context3.abrupt("return");
+            case 27:
               formData = new FormData();
               formData.append('user_idTypeEnviromental', _this4.user.idTypeEnviromental);
               formData.append('user_typePers', _this4.user.typePers);
@@ -2209,15 +2334,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               formData.append('enviromental_description', _this4.enviromental.description);
               formData.append('enviromental_longitud', _this4.markers[0].position.lng);
               formData.append('enviromental_latitud', _this4.markers[0].position.lat);
-              _context3.next = 39;
+              _context3.next = 66;
               return _services_services__WEBPACK_IMPORTED_MODULE_0__["default"].addNewInfo('/denuncia-ambiental/add-enviromental', formData);
-            case 39:
+            case 66:
               result = _context3.sent;
               console.log(result.status);
               if (result.status) {
+                _this4.$toast.success('Su denuncia se registro correctamente');
                 _this4.user = {
                   idTypeEnviromental: 1,
-                  typePers: '1',
+                  typePers: 1,
                   typeDoc: '1',
                   numDoc: '',
                   numRuc: '',
@@ -2229,9 +2355,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   cellPhone: '',
                   gmail: '',
                   address: '',
-                  denun_previa: '',
+                  denun_previa: 'NO',
                   resp_previa: '',
-                  obt_resp: '',
+                  obt_resp: 'NO',
                   resp_obt_resp: ''
                 }, _this4.enviromental = {
                   idTypeEnviromental: 1,
@@ -2253,7 +2379,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   description: ''
                 }, _this4.NumerNext = 1;
               }
-            case 42:
+            case 69:
             case "end":
               return _context3.stop();
           }
@@ -2443,13 +2569,12 @@ var render = function render() {
       value: _vm.user.numDoc
     },
     on: {
-      blur: function blur($event) {
-        return _vm.searchUser();
-      },
-      input: function input($event) {
+      input: [function ($event) {
         if ($event.target.composing) return;
         _vm.$set(_vm.user, "numDoc", $event.target.value);
-      }
+      }, function ($event) {
+        return _vm.searchUser();
+      }]
     }
   })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-3"
@@ -2572,13 +2697,12 @@ var render = function render() {
       value: _vm.user.numRuc
     },
     on: {
-      blur: function blur($event) {
-        return _vm.searchUser();
-      },
-      input: function input($event) {
+      input: [function ($event) {
         if ($event.target.composing) return;
         _vm.$set(_vm.user, "numRuc", $event.target.value);
-      }
+      }, function ($event) {
+        return _vm.searchUser();
+      }]
     }
   })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-9"
@@ -2766,12 +2890,6 @@ var render = function render() {
     }
   }, [_c("option", {
     attrs: {
-      value: "",
-      selected: "",
-      disabled: ""
-    }
-  }, [_vm._v("--Seleccionar--")]), _vm._v(" "), _c("option", {
-    attrs: {
       value: "NO"
     }
   }, [_vm._v("NO")]), _vm._v(" "), _c("option", {
@@ -2796,7 +2914,8 @@ var render = function render() {
     }],
     staticClass: "form-control",
     attrs: {
-      type: "text"
+      type: "text",
+      disabled: _vm.user.denun_previa == "NO" ? true : false
     },
     domProps: {
       value: _vm.user.resp_previa
@@ -2839,12 +2958,6 @@ var render = function render() {
     }
   }, [_c("option", {
     attrs: {
-      value: "",
-      selected: "",
-      disabled: ""
-    }
-  }, [_vm._v("--Seleccionar--")]), _vm._v(" "), _c("option", {
-    attrs: {
       value: "NO"
     }
   }, [_vm._v("NO")]), _vm._v(" "), _c("option", {
@@ -2869,7 +2982,8 @@ var render = function render() {
     }],
     staticClass: "form-control",
     attrs: {
-      type: "text"
+      type: "text",
+      disabled: _vm.user.obt_resp == "NO" ? true : false
     },
     domProps: {
       value: _vm.user.resp_obt_resp
@@ -3647,6 +3761,25 @@ exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base
 
 // module
 exports.push([module.i, "/* required styles */\r\n\r\n.leaflet-pane,\r\n.leaflet-tile,\r\n.leaflet-marker-icon,\r\n.leaflet-marker-shadow,\r\n.leaflet-tile-container,\r\n.leaflet-pane > svg,\r\n.leaflet-pane > canvas,\r\n.leaflet-zoom-box,\r\n.leaflet-image-layer,\r\n.leaflet-layer {\r\n\tposition: absolute;\r\n\tleft: 0;\r\n\ttop: 0;\r\n\t}\r\n.leaflet-container {\r\n\toverflow: hidden;\r\n\t}\r\n.leaflet-tile,\r\n.leaflet-marker-icon,\r\n.leaflet-marker-shadow {\r\n\t-webkit-user-select: none;\r\n\t   -moz-user-select: none;\r\n\t        user-select: none;\r\n\t  -webkit-user-drag: none;\r\n\t}\r\n/* Prevents IE11 from highlighting tiles in blue */\r\n.leaflet-tile::-moz-selection {\r\n\tbackground: transparent;\r\n}\r\n.leaflet-tile::selection {\r\n\tbackground: transparent;\r\n}\r\n/* Safari renders non-retina tile on retina better with this, but Chrome is worse */\r\n.leaflet-safari .leaflet-tile {\r\n\timage-rendering: -webkit-optimize-contrast;\r\n\t}\r\n/* hack that prevents hw layers \"stretching\" when loading new tiles */\r\n.leaflet-safari .leaflet-tile-container {\r\n\twidth: 1600px;\r\n\theight: 1600px;\r\n\t-webkit-transform-origin: 0 0;\r\n\t}\r\n.leaflet-marker-icon,\r\n.leaflet-marker-shadow {\r\n\tdisplay: block;\r\n\t}\r\n/* .leaflet-container svg: reset svg max-width decleration shipped in Joomla! (joomla.org) 3.x */\r\n/* .leaflet-container img: map is broken in FF if you have max-width: 100% on tiles */\r\n.leaflet-container .leaflet-overlay-pane svg {\r\n\tmax-width: none !important;\r\n\tmax-height: none !important;\r\n\t}\r\n.leaflet-container .leaflet-marker-pane img,\r\n.leaflet-container .leaflet-shadow-pane img,\r\n.leaflet-container .leaflet-tile-pane img,\r\n.leaflet-container img.leaflet-image-layer,\r\n.leaflet-container .leaflet-tile {\r\n\tmax-width: none !important;\r\n\tmax-height: none !important;\r\n\twidth: auto;\r\n\tpadding: 0;\r\n\t}\r\n\r\n.leaflet-container img.leaflet-tile {\r\n\t/* See: https://bugs.chromium.org/p/chromium/issues/detail?id=600120 */\r\n\tmix-blend-mode: plus-lighter;\r\n}\r\n\r\n.leaflet-container.leaflet-touch-zoom {\r\n\ttouch-action: pan-x pan-y;\r\n\t}\r\n.leaflet-container.leaflet-touch-drag {\r\n\t/* Fallback for FF which doesn't support pinch-zoom */\r\n\ttouch-action: none;\r\n\ttouch-action: pinch-zoom;\r\n}\r\n.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {\r\n\ttouch-action: none;\r\n}\r\n.leaflet-container {\r\n\t-webkit-tap-highlight-color: transparent;\r\n}\r\n.leaflet-container a {\r\n\t-webkit-tap-highlight-color: rgba(51, 181, 229, 0.4);\r\n}\r\n.leaflet-tile {\r\n\tfilter: inherit;\r\n\tvisibility: hidden;\r\n\t}\r\n.leaflet-tile-loaded {\r\n\tvisibility: inherit;\r\n\t}\r\n.leaflet-zoom-box {\r\n\twidth: 0;\r\n\theight: 0;\r\n\tbox-sizing: border-box;\r\n\tz-index: 800;\r\n\t}\r\n/* workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=888319 */\r\n.leaflet-overlay-pane svg {\r\n\t-moz-user-select: none;\r\n\t}\r\n\r\n.leaflet-pane         { z-index: 400; }\r\n\r\n.leaflet-tile-pane    { z-index: 200; }\r\n.leaflet-overlay-pane { z-index: 400; }\r\n.leaflet-shadow-pane  { z-index: 500; }\r\n.leaflet-marker-pane  { z-index: 600; }\r\n.leaflet-tooltip-pane   { z-index: 650; }\r\n.leaflet-popup-pane   { z-index: 700; }\r\n\r\n.leaflet-map-pane canvas { z-index: 100; }\r\n.leaflet-map-pane svg    { z-index: 200; }\r\n\r\n.leaflet-vml-shape {\r\n\twidth: 1px;\r\n\theight: 1px;\r\n\t}\r\n.lvml {\r\n\tbehavior: url(#default#VML);\r\n\tdisplay: inline-block;\r\n\tposition: absolute;\r\n\t}\r\n\r\n\r\n/* control positioning */\r\n\r\n.leaflet-control {\r\n\tposition: relative;\r\n\tz-index: 800;\r\n\tpointer-events: visiblePainted; /* IE 9-10 doesn't have auto */\r\n\tpointer-events: auto;\r\n\t}\r\n.leaflet-top,\r\n.leaflet-bottom {\r\n\tposition: absolute;\r\n\tz-index: 1000;\r\n\tpointer-events: none;\r\n\t}\r\n.leaflet-top {\r\n\ttop: 0;\r\n\t}\r\n.leaflet-right {\r\n\tright: 0;\r\n\t}\r\n.leaflet-bottom {\r\n\tbottom: 0;\r\n\t}\r\n.leaflet-left {\r\n\tleft: 0;\r\n\t}\r\n.leaflet-control {\r\n\tfloat: left;\r\n\tclear: both;\r\n\t}\r\n.leaflet-right .leaflet-control {\r\n\tfloat: right;\r\n\t}\r\n.leaflet-top .leaflet-control {\r\n\tmargin-top: 10px;\r\n\t}\r\n.leaflet-bottom .leaflet-control {\r\n\tmargin-bottom: 10px;\r\n\t}\r\n.leaflet-left .leaflet-control {\r\n\tmargin-left: 10px;\r\n\t}\r\n.leaflet-right .leaflet-control {\r\n\tmargin-right: 10px;\r\n\t}\r\n\r\n\r\n/* zoom and fade animations */\r\n\r\n.leaflet-fade-anim .leaflet-popup {\r\n\topacity: 0;\r\n\ttransition: opacity 0.2s linear;\r\n\t}\r\n.leaflet-fade-anim .leaflet-map-pane .leaflet-popup {\r\n\topacity: 1;\r\n\t}\r\n.leaflet-zoom-animated {\r\n\ttransform-origin: 0 0;\r\n\t}\r\nsvg.leaflet-zoom-animated {\r\n\twill-change: transform;\r\n}\r\n\r\n.leaflet-zoom-anim .leaflet-zoom-animated {\r\n\ttransition:         transform 0.25s cubic-bezier(0,0,0.25,1);\r\n\t}\r\n.leaflet-zoom-anim .leaflet-tile,\r\n.leaflet-pan-anim .leaflet-tile {\r\n\ttransition: none;\r\n\t}\r\n\r\n.leaflet-zoom-anim .leaflet-zoom-hide {\r\n\tvisibility: hidden;\r\n\t}\r\n\r\n\r\n/* cursors */\r\n\r\n.leaflet-interactive {\r\n\tcursor: pointer;\r\n\t}\r\n.leaflet-grab {\r\n\tcursor:         grab;\r\n\t}\r\n.leaflet-crosshair,\r\n.leaflet-crosshair .leaflet-interactive {\r\n\tcursor: crosshair;\r\n\t}\r\n.leaflet-popup-pane,\r\n.leaflet-control {\r\n\tcursor: auto;\r\n\t}\r\n.leaflet-dragging .leaflet-grab,\r\n.leaflet-dragging .leaflet-grab .leaflet-interactive,\r\n.leaflet-dragging .leaflet-marker-draggable {\r\n\tcursor: move;\r\n\tcursor:         grabbing;\r\n\t}\r\n\r\n/* marker & overlays interactivity */\r\n.leaflet-marker-icon,\r\n.leaflet-marker-shadow,\r\n.leaflet-image-layer,\r\n.leaflet-pane > svg path,\r\n.leaflet-tile-container {\r\n\tpointer-events: none;\r\n\t}\r\n\r\n.leaflet-marker-icon.leaflet-interactive,\r\n.leaflet-image-layer.leaflet-interactive,\r\n.leaflet-pane > svg path.leaflet-interactive,\r\nsvg.leaflet-image-layer.leaflet-interactive path {\r\n\tpointer-events: visiblePainted; /* IE 9-10 doesn't have auto */\r\n\tpointer-events: auto;\r\n\t}\r\n\r\n/* visual tweaks */\r\n\r\n.leaflet-container {\r\n\tbackground: #ddd;\r\n\toutline-offset: 1px;\r\n\t}\r\n.leaflet-container a {\r\n\tcolor: #0078A8;\r\n\t}\r\n.leaflet-zoom-box {\r\n\tborder: 2px dotted #38f;\r\n\tbackground: rgba(255,255,255,0.5);\r\n\t}\r\n\r\n\r\n/* general typography */\r\n.leaflet-container {\r\n\tfont-family: \"Helvetica Neue\", Arial, Helvetica, sans-serif;\r\n\tfont-size: 12px;\r\n\tfont-size: 0.75rem;\r\n\tline-height: 1.5;\r\n\t}\r\n\r\n\r\n/* general toolbar styles */\r\n\r\n.leaflet-bar {\r\n\tbox-shadow: 0 1px 5px rgba(0,0,0,0.65);\r\n\tborder-radius: 4px;\r\n\t}\r\n.leaflet-bar a {\r\n\tbackground-color: #fff;\r\n\tborder-bottom: 1px solid #ccc;\r\n\twidth: 26px;\r\n\theight: 26px;\r\n\tline-height: 26px;\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\ttext-decoration: none;\r\n\tcolor: black;\r\n\t}\r\n.leaflet-bar a,\r\n.leaflet-control-layers-toggle {\r\n\tbackground-position: 50% 50%;\r\n\tbackground-repeat: no-repeat;\r\n\tdisplay: block;\r\n\t}\r\n.leaflet-bar a:hover,\r\n.leaflet-bar a:focus {\r\n\tbackground-color: #f4f4f4;\r\n\t}\r\n.leaflet-bar a:first-child {\r\n\tborder-top-left-radius: 4px;\r\n\tborder-top-right-radius: 4px;\r\n\t}\r\n.leaflet-bar a:last-child {\r\n\tborder-bottom-left-radius: 4px;\r\n\tborder-bottom-right-radius: 4px;\r\n\tborder-bottom: none;\r\n\t}\r\n.leaflet-bar a.leaflet-disabled {\r\n\tcursor: default;\r\n\tbackground-color: #f4f4f4;\r\n\tcolor: #bbb;\r\n\t}\r\n\r\n.leaflet-touch .leaflet-bar a {\r\n\twidth: 30px;\r\n\theight: 30px;\r\n\tline-height: 30px;\r\n\t}\r\n.leaflet-touch .leaflet-bar a:first-child {\r\n\tborder-top-left-radius: 2px;\r\n\tborder-top-right-radius: 2px;\r\n\t}\r\n.leaflet-touch .leaflet-bar a:last-child {\r\n\tborder-bottom-left-radius: 2px;\r\n\tborder-bottom-right-radius: 2px;\r\n\t}\r\n\r\n/* zoom control */\r\n\r\n.leaflet-control-zoom-in,\r\n.leaflet-control-zoom-out {\r\n\tfont: bold 18px 'Lucida Console', Monaco, monospace;\r\n\ttext-indent: 1px;\r\n\t}\r\n\r\n.leaflet-touch .leaflet-control-zoom-in, .leaflet-touch .leaflet-control-zoom-out  {\r\n\tfont-size: 22px;\r\n\t}\r\n\r\n\r\n/* layers control */\r\n\r\n.leaflet-control-layers {\r\n\tbox-shadow: 0 1px 5px rgba(0,0,0,0.4);\r\n\tbackground: #fff;\r\n\tborder-radius: 5px;\r\n\t}\r\n.leaflet-control-layers-toggle {\r\n\tbackground-image: url(" + escape(__webpack_require__(/*! ./images/layers.png */ "./node_modules/leaflet/dist/images/layers.png")) + ");\r\n\twidth: 36px;\r\n\theight: 36px;\r\n\t}\r\n.leaflet-retina .leaflet-control-layers-toggle {\r\n\tbackground-image: url(" + escape(__webpack_require__(/*! ./images/layers-2x.png */ "./node_modules/leaflet/dist/images/layers-2x.png")) + ");\r\n\tbackground-size: 26px 26px;\r\n\t}\r\n.leaflet-touch .leaflet-control-layers-toggle {\r\n\twidth: 44px;\r\n\theight: 44px;\r\n\t}\r\n.leaflet-control-layers .leaflet-control-layers-list,\r\n.leaflet-control-layers-expanded .leaflet-control-layers-toggle {\r\n\tdisplay: none;\r\n\t}\r\n.leaflet-control-layers-expanded .leaflet-control-layers-list {\r\n\tdisplay: block;\r\n\tposition: relative;\r\n\t}\r\n.leaflet-control-layers-expanded {\r\n\tpadding: 6px 10px 6px 6px;\r\n\tcolor: #333;\r\n\tbackground: #fff;\r\n\t}\r\n.leaflet-control-layers-scrollbar {\r\n\toverflow-y: scroll;\r\n\toverflow-x: hidden;\r\n\tpadding-right: 5px;\r\n\t}\r\n.leaflet-control-layers-selector {\r\n\tmargin-top: 2px;\r\n\tposition: relative;\r\n\ttop: 1px;\r\n\t}\r\n.leaflet-control-layers label {\r\n\tdisplay: block;\r\n\tfont-size: 13px;\r\n\tfont-size: 1.08333em;\r\n\t}\r\n.leaflet-control-layers-separator {\r\n\theight: 0;\r\n\tborder-top: 1px solid #ddd;\r\n\tmargin: 5px -10px 5px -6px;\r\n\t}\r\n\r\n/* Default icon URLs */\r\n.leaflet-default-icon-path { /* used only in path-guessing heuristic, see L.Icon.Default */\r\n\tbackground-image: url(" + escape(__webpack_require__(/*! ./images/marker-icon.png */ "./node_modules/leaflet/dist/images/marker-icon.png")) + ");\r\n\t}\r\n\r\n\r\n/* attribution and scale controls */\r\n\r\n.leaflet-container .leaflet-control-attribution {\r\n\tbackground: #fff;\r\n\tbackground: rgba(255, 255, 255, 0.8);\r\n\tmargin: 0;\r\n\t}\r\n.leaflet-control-attribution,\r\n.leaflet-control-scale-line {\r\n\tpadding: 0 5px;\r\n\tcolor: #333;\r\n\tline-height: 1.4;\r\n\t}\r\n.leaflet-control-attribution a {\r\n\ttext-decoration: none;\r\n\t}\r\n.leaflet-control-attribution a:hover,\r\n.leaflet-control-attribution a:focus {\r\n\ttext-decoration: underline;\r\n\t}\r\n.leaflet-attribution-flag {\r\n\tdisplay: inline !important;\r\n\tvertical-align: baseline !important;\r\n\twidth: 1em;\r\n\theight: 0.6669em;\r\n\t}\r\n.leaflet-left .leaflet-control-scale {\r\n\tmargin-left: 5px;\r\n\t}\r\n.leaflet-bottom .leaflet-control-scale {\r\n\tmargin-bottom: 5px;\r\n\t}\r\n.leaflet-control-scale-line {\r\n\tborder: 2px solid #777;\r\n\tborder-top: none;\r\n\tline-height: 1.1;\r\n\tpadding: 2px 5px 1px;\r\n\twhite-space: nowrap;\r\n\tbox-sizing: border-box;\r\n\tbackground: rgba(255, 255, 255, 0.8);\r\n\ttext-shadow: 1px 1px #fff;\r\n\t}\r\n.leaflet-control-scale-line:not(:first-child) {\r\n\tborder-top: 2px solid #777;\r\n\tborder-bottom: none;\r\n\tmargin-top: -2px;\r\n\t}\r\n.leaflet-control-scale-line:not(:first-child):not(:last-child) {\r\n\tborder-bottom: 2px solid #777;\r\n\t}\r\n\r\n.leaflet-touch .leaflet-control-attribution,\r\n.leaflet-touch .leaflet-control-layers,\r\n.leaflet-touch .leaflet-bar {\r\n\tbox-shadow: none;\r\n\t}\r\n.leaflet-touch .leaflet-control-layers,\r\n.leaflet-touch .leaflet-bar {\r\n\tborder: 2px solid rgba(0,0,0,0.2);\r\n\tbackground-clip: padding-box;\r\n\t}\r\n\r\n\r\n/* popup */\r\n\r\n.leaflet-popup {\r\n\tposition: absolute;\r\n\ttext-align: center;\r\n\tmargin-bottom: 20px;\r\n\t}\r\n.leaflet-popup-content-wrapper {\r\n\tpadding: 1px;\r\n\ttext-align: left;\r\n\tborder-radius: 12px;\r\n\t}\r\n.leaflet-popup-content {\r\n\tmargin: 13px 24px 13px 20px;\r\n\tline-height: 1.3;\r\n\tfont-size: 13px;\r\n\tfont-size: 1.08333em;\r\n\tmin-height: 1px;\r\n\t}\r\n.leaflet-popup-content p {\r\n\tmargin: 17px 0;\r\n\tmargin: 1.3em 0;\r\n\t}\r\n.leaflet-popup-tip-container {\r\n\twidth: 40px;\r\n\theight: 20px;\r\n\tposition: absolute;\r\n\tleft: 50%;\r\n\tmargin-top: -1px;\r\n\tmargin-left: -20px;\r\n\toverflow: hidden;\r\n\tpointer-events: none;\r\n\t}\r\n.leaflet-popup-tip {\r\n\twidth: 17px;\r\n\theight: 17px;\r\n\tpadding: 1px;\r\n\r\n\tmargin: -10px auto 0;\r\n\tpointer-events: auto;\r\n\ttransform: rotate(45deg);\r\n\t}\r\n.leaflet-popup-content-wrapper,\r\n.leaflet-popup-tip {\r\n\tbackground: white;\r\n\tcolor: #333;\r\n\tbox-shadow: 0 3px 14px rgba(0,0,0,0.4);\r\n\t}\r\n.leaflet-container a.leaflet-popup-close-button {\r\n\tposition: absolute;\r\n\ttop: 0;\r\n\tright: 0;\r\n\tborder: none;\r\n\ttext-align: center;\r\n\twidth: 24px;\r\n\theight: 24px;\r\n\tfont: 16px/24px Tahoma, Verdana, sans-serif;\r\n\tcolor: #757575;\r\n\ttext-decoration: none;\r\n\tbackground: transparent;\r\n\t}\r\n.leaflet-container a.leaflet-popup-close-button:hover,\r\n.leaflet-container a.leaflet-popup-close-button:focus {\r\n\tcolor: #585858;\r\n\t}\r\n.leaflet-popup-scrolled {\r\n\toverflow: auto;\r\n\t}\r\n\r\n.leaflet-oldie .leaflet-popup-content-wrapper {\r\n\t-ms-zoom: 1;\r\n\t}\r\n.leaflet-oldie .leaflet-popup-tip {\r\n\twidth: 24px;\r\n\tmargin: 0 auto;\r\n\r\n\t-ms-filter: \"progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)\";\r\n\tfilter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678);\r\n\t}\r\n\r\n.leaflet-oldie .leaflet-control-zoom,\r\n.leaflet-oldie .leaflet-control-layers,\r\n.leaflet-oldie .leaflet-popup-content-wrapper,\r\n.leaflet-oldie .leaflet-popup-tip {\r\n\tborder: 1px solid #999;\r\n\t}\r\n\r\n\r\n/* div icon */\r\n\r\n.leaflet-div-icon {\r\n\tbackground: #fff;\r\n\tborder: 1px solid #666;\r\n\t}\r\n\r\n\r\n/* Tooltip */\r\n/* Base styles for the element that has a tooltip */\r\n.leaflet-tooltip {\r\n\tposition: absolute;\r\n\tpadding: 6px;\r\n\tbackground-color: #fff;\r\n\tborder: 1px solid #fff;\r\n\tborder-radius: 3px;\r\n\tcolor: #222;\r\n\twhite-space: nowrap;\r\n\t-webkit-user-select: none;\r\n\t-moz-user-select: none;\r\n\tuser-select: none;\r\n\tpointer-events: none;\r\n\tbox-shadow: 0 1px 3px rgba(0,0,0,0.4);\r\n\t}\r\n.leaflet-tooltip.leaflet-interactive {\r\n\tcursor: pointer;\r\n\tpointer-events: auto;\r\n\t}\r\n.leaflet-tooltip-top:before,\r\n.leaflet-tooltip-bottom:before,\r\n.leaflet-tooltip-left:before,\r\n.leaflet-tooltip-right:before {\r\n\tposition: absolute;\r\n\tpointer-events: none;\r\n\tborder: 6px solid transparent;\r\n\tbackground: transparent;\r\n\tcontent: \"\";\r\n\t}\r\n\r\n/* Directions */\r\n\r\n.leaflet-tooltip-bottom {\r\n\tmargin-top: 6px;\r\n}\r\n.leaflet-tooltip-top {\r\n\tmargin-top: -6px;\r\n}\r\n.leaflet-tooltip-bottom:before,\r\n.leaflet-tooltip-top:before {\r\n\tleft: 50%;\r\n\tmargin-left: -6px;\r\n\t}\r\n.leaflet-tooltip-top:before {\r\n\tbottom: 0;\r\n\tmargin-bottom: -12px;\r\n\tborder-top-color: #fff;\r\n\t}\r\n.leaflet-tooltip-bottom:before {\r\n\ttop: 0;\r\n\tmargin-top: -12px;\r\n\tmargin-left: -6px;\r\n\tborder-bottom-color: #fff;\r\n\t}\r\n.leaflet-tooltip-left {\r\n\tmargin-left: -6px;\r\n}\r\n.leaflet-tooltip-right {\r\n\tmargin-left: 6px;\r\n}\r\n.leaflet-tooltip-left:before,\r\n.leaflet-tooltip-right:before {\r\n\ttop: 50%;\r\n\tmargin-top: -6px;\r\n\t}\r\n.leaflet-tooltip-left:before {\r\n\tright: 0;\r\n\tmargin-right: -12px;\r\n\tborder-left-color: #fff;\r\n\t}\r\n.leaflet-tooltip-right:before {\r\n\tleft: 0;\r\n\tmargin-left: -12px;\r\n\tborder-right-color: #fff;\r\n\t}\r\n\r\n/* Printing */\r\n\r\n@media print {\r\n\t/* Prevent printers from removing background-images of controls. */\r\n\t.leaflet-control {\r\n\t\t-webkit-print-color-adjust: exact;\r\n\t\tprint-color-adjust: exact;\r\n\t\t}\r\n\t}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-toast-notification/dist/theme-sugar.css":
+/*!**************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-toast-notification/dist/theme-sugar.css ***!
+  \**************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "@keyframes fadeOut{from{opacity:1}to{opacity:0}}.v-toast--fade-out{animation-name:fadeOut}@keyframes fadeInDown{from{opacity:0;transform:translate3d(0, -100%, 0)}to{opacity:1;transform:none}}.v-toast--fade-in-down{animation-name:fadeInDown}@keyframes fadeInUp{from{opacity:0;transform:translate3d(0, 100%, 0)}to{opacity:1;transform:none}}.v-toast--fade-in-up{animation-name:fadeInUp}.fade-enter-active,.fade-leave-active{transition:opacity 150ms ease-out}.fade-enter,.fade-leave-to{opacity:0}.v-toast{position:fixed;display:flex;top:0;bottom:0;left:0;right:0;padding:2em;overflow:hidden;z-index:1052;pointer-events:none}.v-toast__item{display:inline-flex;align-items:center;animation-duration:150ms;margin:.5em 0;box-shadow:0 1px 4px rgba(0,0,0,.12),0 0 6px rgba(0,0,0,.04);border-radius:.25em;pointer-events:auto;opacity:.92;color:#fff;min-height:3em;cursor:pointer}.v-toast__item--success{background-color:#47d78a}.v-toast__item--info{background-color:#1c85d5}.v-toast__item--warning{background-color:#febc22}.v-toast__item--error{background-color:#f7471c}.v-toast__item--default{background-color:#343a40}.v-toast__item--warning{color:#000}.v-toast__item.v-toast__item--top,.v-toast__item.v-toast__item--bottom{align-self:center}.v-toast__item.v-toast__item--top-right,.v-toast__item.v-toast__item--bottom-right{align-self:flex-end}.v-toast__item.v-toast__item--top-left,.v-toast__item.v-toast__item--bottom-left{align-self:flex-start}.v-toast__text{margin:0;padding:.5em 1em;word-break:break-word}.v-toast__icon{display:none}.v-toast.v-toast--top{flex-direction:column}.v-toast.v-toast--bottom{flex-direction:column-reverse}.v-toast.v-toast--custom-parent{position:absolute}@media screen and (max-width: 768px){.v-toast{padding:0;position:fixed !important}}.v-toast__item{opacity:1;min-height:4em}.v-toast__item .v-toast__text{padding:1.5em 1em}.v-toast__item .v-toast__icon{display:block;width:27px;min-width:27px;height:27px;margin-left:1em;background:url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 45.999 45.999'%3e %3cpath fill='%23fff' d='M39.264 6.736c-8.982-8.981-23.545-8.982-32.528 0-8.982 8.982-8.981 23.545 0 32.528 8.982 8.98 23.545 8.981 32.528 0 8.981-8.983 8.98-23.545 0-32.528zM25.999 33a3 3 0 11-6 0V21a3 3 0 116 0v12zm-3.053-17.128c-1.728 0-2.88-1.224-2.844-2.735-.036-1.584 1.116-2.771 2.879-2.771 1.764 0 2.88 1.188 2.917 2.771-.001 1.511-1.152 2.735-2.952 2.735z'/%3e %3c/svg%3e\") no-repeat}.v-toast__item.v-toast__item--success .v-toast__icon{background:url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3e %3cpath fill='%23fff' d='M26 0C11.664 0 0 11.663 0 26s11.664 26 26 26 26-11.663 26-26S40.336 0 26 0zm14.495 17.329l-16 18a1.997 1.997 0 01-2.745.233l-10-8a2 2 0 012.499-3.124l8.517 6.813L37.505 14.67a2.001 2.001 0 012.99 2.659z'/%3e %3c/svg%3e\") no-repeat}.v-toast__item.v-toast__item--error .v-toast__icon{background:url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 51.976 51.976'%3e %3cpath fill='%23fff' d='M44.373 7.603c-10.137-10.137-26.632-10.138-36.77 0-10.138 10.138-10.137 26.632 0 36.77s26.632 10.138 36.77 0c10.137-10.138 10.137-26.633 0-36.77zm-8.132 28.638a2 2 0 01-2.828 0l-7.425-7.425-7.778 7.778a2 2 0 11-2.828-2.828l7.778-7.778-7.425-7.425a2 2 0 112.828-2.828l7.425 7.425 7.071-7.071a2 2 0 112.828 2.828l-7.071 7.071 7.425 7.425a2 2 0 010 2.828z'/%3e %3c/svg%3e\") no-repeat}.v-toast__item.v-toast__item--warning .v-toast__icon{background:url(\"data:image/svg+xml,%3csvg viewBox='0 0 52 52' xmlns='http://www.w3.org/2000/svg'%3e %3cpath fill='%23000' d='M49.466 41.26L29.216 6.85c-.69-1.16-1.89-1.85-3.22-1.85-1.32 0-2.53.69-3.21 1.85L2.536 41.26c-.71 1.2-.72 2.64-.03 3.85.68 1.18 1.89 1.89 3.24 1.89h40.51c1.35 0 2.56-.71 3.23-1.89.7-1.21.69-2.65-.02-3.85zm-25.53-21.405h3.381v3.187l-.724 8.92H24.66l-.725-8.92v-3.187zm2.97 17.344a1.712 1.712 0 01-1.267.543c-.491 0-.914-.181-1.268-.543a1.788 1.788 0 01-.531-1.297c0-.502.176-.935.53-1.297a1.712 1.712 0 011.269-.544c.49 0 .914.181 1.268.544s.53.795.53 1.297c0 .503-.176.934-.53 1.297z'/%3e %3c/svg%3e\") no-repeat}\n", ""]);
 
 // exports
 
@@ -36712,6 +36845,521 @@ function normalizeComponent(
 
 /***/ }),
 
+/***/ "./node_modules/vue-toast-notification/dist/index.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/vue-toast-notification/dist/index.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(true)
+		module.exports = factory();
+	else {}
+})(this, () => {
+return /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	// The require scope
+/******/ 	var __webpack_require__ = {};
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "default": () => (/* binding */ src)
+});
+
+// UNUSED EXPORTS: Component, Positions
+
+;// CONCATENATED MODULE: ./node_modules/.pnpm/babel-loader@9.1.2_qoaxtqicpzj5p3ubthw53xafqm/node_modules/babel-loader/lib/index.js!./node_modules/.pnpm/vue-loader@15.10.1_y5o36p7qrshhm4v7l6yk7rwfsu/node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/.pnpm/vue-loader@15.10.1_y5o36p7qrshhm4v7l6yk7rwfsu/node_modules/vue-loader/lib/index.js??vue-loader-options!./src/js/Component.vue?vue&type=template&id=6dd22dbe&
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c('transition', {
+    attrs: {
+      "enter-active-class": _vm.transition.enter,
+      "leave-active-class": _vm.transition.leave
+    }
+  }, [_c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: _vm.isActive,
+      expression: "isActive"
+    }],
+    staticClass: "v-toast__item",
+    class: [`v-toast__item--${_vm.type}`, `v-toast__item--${_vm.position}`],
+    attrs: {
+      "role": "alert"
+    },
+    on: {
+      "mouseover": function ($event) {
+        return _vm.toggleTimer(true);
+      },
+      "mouseleave": function ($event) {
+        return _vm.toggleTimer(false);
+      },
+      "click": _vm.whenClicked
+    }
+  }, [_c('div', {
+    staticClass: "v-toast__icon"
+  }), _vm._v(" "), _c('p', {
+    staticClass: "v-toast__text",
+    domProps: {
+      "innerHTML": _vm._s(_vm.message)
+    }
+  })])]);
+};
+var staticRenderFns = [];
+
+;// CONCATENATED MODULE: ./src/js/helpers.js
+const removeElement = el => {
+  if (typeof el.remove !== 'undefined') {
+    el.remove();
+  } else {
+    el.parentNode.removeChild(el);
+  }
+};
+
+;// CONCATENATED MODULE: ./src/js/timer.js
+// https://stackoverflow.com/a/3969760
+class Timer {
+  constructor(callback, delay) {
+    this.startedAt = Date.now();
+    this.callback = callback;
+    this.delay = delay;
+    this.timer = setTimeout(callback, delay);
+  }
+  pause() {
+    this.stop();
+    this.delay -= Date.now() - this.startedAt;
+  }
+  resume() {
+    this.stop();
+    this.startedAt = Date.now();
+    this.timer = setTimeout(this.callback, this.delay);
+  }
+  stop() {
+    clearTimeout(this.timer);
+  }
+}
+;// CONCATENATED MODULE: ./src/js/positions.js
+/* harmony default export */ const positions = (Object.freeze({
+  TOP_RIGHT: 'top-right',
+  TOP: 'top',
+  TOP_LEFT: 'top-left',
+  BOTTOM_RIGHT: 'bottom-right',
+  BOTTOM: 'bottom',
+  BOTTOM_LEFT: 'bottom-left'
+}));
+;// CONCATENATED MODULE: ./node_modules/.pnpm/mitt@3.0.0/node_modules/mitt/dist/mitt.mjs
+/* harmony default export */ function mitt(n){return{all:n=n||new Map,on:function(t,e){var i=n.get(t);i?i.push(e):n.set(t,[e])},off:function(t,e){var i=n.get(t);i&&(e?i.splice(i.indexOf(e)>>>0,1):n.set(t,[]))},emit:function(t,e){var i=n.get(t);i&&i.slice().map(function(n){n(e)}),(i=n.get("*"))&&i.slice().map(function(n){n(t,e)})}}}
+//# sourceMappingURL=mitt.mjs.map
+
+;// CONCATENATED MODULE: ./src/js/bus.js
+
+/* harmony default export */ const bus = (mitt());
+;// CONCATENATED MODULE: ./node_modules/.pnpm/babel-loader@9.1.2_qoaxtqicpzj5p3ubthw53xafqm/node_modules/babel-loader/lib/index.js!./node_modules/.pnpm/vue-loader@15.10.1_y5o36p7qrshhm4v7l6yk7rwfsu/node_modules/vue-loader/lib/index.js??vue-loader-options!./src/js/Component.vue?vue&type=script&lang=js&
+
+
+
+
+/* harmony default export */ const Componentvue_type_script_lang_js_ = ({
+  name: 'toast',
+  props: {
+    message: {
+      type: String,
+      required: true
+    },
+    type: {
+      type: String,
+      default: 'success'
+    },
+    position: {
+      type: String,
+      default: positions.BOTTOM_RIGHT,
+      validator(value) {
+        return Object.values(positions).includes(value);
+      }
+    },
+    duration: {
+      type: Number,
+      default: 3000
+    },
+    dismissible: {
+      type: Boolean,
+      default: true
+    },
+    onDismiss: {
+      type: Function,
+      default: () => {}
+    },
+    onClick: {
+      type: Function,
+      default: () => {}
+    },
+    queue: Boolean,
+    pauseOnHover: {
+      type: Boolean,
+      default: true
+    }
+  },
+  data() {
+    return {
+      isActive: false,
+      parentTop: null,
+      parentBottom: null,
+      isHovered: false
+    };
+  },
+  beforeMount() {
+    this.setupContainer();
+  },
+  mounted() {
+    this.showNotice();
+    bus.on('toast-clear', this.dismiss);
+  },
+  methods: {
+    setupContainer() {
+      this.parentTop = document.querySelector('.v-toast.v-toast--top');
+      this.parentBottom = document.querySelector('.v-toast.v-toast--bottom');
+      // No need to create them, they already exists
+      if (this.parentTop && this.parentBottom) return;
+      if (!this.parentTop) {
+        this.parentTop = document.createElement('div');
+        this.parentTop.className = 'v-toast v-toast--top';
+      }
+      if (!this.parentBottom) {
+        this.parentBottom = document.createElement('div');
+        this.parentBottom.className = 'v-toast v-toast--bottom';
+      }
+      const container = document.body;
+      container.appendChild(this.parentTop);
+      container.appendChild(this.parentBottom);
+    },
+    shouldQueue() {
+      if (!this.queue) return false;
+      return this.parentTop.childElementCount > 0 || this.parentBottom.childElementCount > 0;
+    },
+    dismiss() {
+      if (this.timer) this.timer.stop();
+      clearTimeout(this.queueTimer);
+      this.isActive = false;
+
+      // Timeout for the animation complete before destroying
+      setTimeout(() => {
+        this.onDismiss.apply(null, arguments);
+        this.$destroy();
+        removeElement(this.$el);
+      }, 150);
+    },
+    showNotice() {
+      if (this.shouldQueue()) {
+        // Call recursively if should queue
+        this.queueTimer = setTimeout(this.showNotice, 250);
+        return;
+      }
+      this.correctParent.insertAdjacentElement('afterbegin', this.$el);
+      this.isActive = true;
+      if (this.duration) {
+        this.timer = new Timer(this.dismiss, this.duration);
+      }
+    },
+    whenClicked() {
+      if (!this.dismissible) return;
+      this.onClick.apply(null, arguments);
+      this.dismiss();
+    },
+    toggleTimer(newVal) {
+      if (!this.pauseOnHover || !this.timer) return;
+      newVal ? this.timer.pause() : this.timer.resume();
+    }
+  },
+  computed: {
+    correctParent() {
+      switch (this.position) {
+        case positions.TOP:
+        case positions.TOP_RIGHT:
+        case positions.TOP_LEFT:
+          return this.parentTop;
+        case positions.BOTTOM:
+        case positions.BOTTOM_RIGHT:
+        case positions.BOTTOM_LEFT:
+          return this.parentBottom;
+      }
+    },
+    transition() {
+      switch (this.position) {
+        case positions.TOP:
+        case positions.TOP_RIGHT:
+        case positions.TOP_LEFT:
+          return {
+            enter: 'v-toast--fade-in-down',
+            leave: 'v-toast--fade-out'
+          };
+        case positions.BOTTOM:
+        case positions.BOTTOM_RIGHT:
+        case positions.BOTTOM_LEFT:
+          return {
+            enter: 'v-toast--fade-in-up',
+            leave: 'v-toast--fade-out'
+          };
+      }
+    }
+  },
+  beforeDestroy() {
+    bus.off('toast-clear', this.dismiss);
+  }
+});
+;// CONCATENATED MODULE: ./src/js/Component.vue?vue&type=script&lang=js&
+ /* harmony default export */ const js_Componentvue_type_script_lang_js_ = (Componentvue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ./node_modules/.pnpm/vue-loader@15.10.1_y5o36p7qrshhm4v7l6yk7rwfsu/node_modules/vue-loader/lib/runtime/componentNormalizer.js
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent(
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */,
+  shadowMode /* vue-cli only */
+) {
+  // Vue.extend constructor export interop
+  var options =
+    typeof scriptExports === 'function' ? scriptExports.options : scriptExports
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) {
+    // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () {
+          injectStyles.call(
+            this,
+            (options.functional ? this.parent : this).$root.$options.shadowRoot
+          )
+        }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functional component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection(h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing ? [].concat(existing, hook) : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
+;// CONCATENATED MODULE: ./src/js/Component.vue
+
+
+
+
+
+/* normalize component */
+;
+var component = normalizeComponent(
+  js_Componentvue_type_script_lang_js_,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ const Component = (component.exports);
+;// CONCATENATED MODULE: ./src/js/api.js
+
+
+const Api = function (Vue) {
+  let globalOptions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  return {
+    open(options) {
+      let message;
+      if (typeof options === 'string') message = options;
+      const defaultOptions = {
+        message
+      };
+      const propsData = Object.assign({}, defaultOptions, globalOptions, options);
+      return new (Vue.extend(Component))({
+        el: document.createElement('div'),
+        propsData
+      });
+    },
+    clear() {
+      bus.emit('toast-clear');
+    },
+    success(message) {
+      let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      return this.open(Object.assign({}, {
+        message,
+        type: 'success'
+      }, options));
+    },
+    error(message) {
+      let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      return this.open(Object.assign({}, {
+        message,
+        type: 'error'
+      }, options));
+    },
+    info(message) {
+      let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      return this.open(Object.assign({}, {
+        message,
+        type: 'info'
+      }, options));
+    },
+    warning(message) {
+      let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      return this.open(Object.assign({}, {
+        message,
+        type: 'warning'
+      }, options));
+    },
+    default(message) {
+      let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      return this.open(Object.assign({}, {
+        message,
+        type: 'default'
+      }, options));
+    }
+  };
+};
+/* harmony default export */ const api = (Api);
+;// CONCATENATED MODULE: ./src/index.js
+
+
+
+const Plugin = function (Vue) {
+  let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  let methods = api(Vue, options);
+  Vue.$toast = methods;
+  Vue.prototype.$toast = methods;
+};
+Component.install = Plugin;
+/* harmony default export */ const src = (Component);
+
+__webpack_exports__ = __webpack_exports__["default"];
+/******/ 	return __webpack_exports__;
+/******/ })()
+;
+});
+
+/***/ }),
+
+/***/ "./node_modules/vue-toast-notification/dist/theme-sugar.css":
+/*!******************************************************************!*\
+  !*** ./node_modules/vue-toast-notification/dist/theme-sugar.css ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./theme-sugar.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-toast-notification/dist/theme-sugar.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/vue/dist/vue.common.dev.js":
 /*!*************************************************!*\
   !*** ./node_modules/vue/dist/vue.common.dev.js ***!
@@ -61207,20 +61855,33 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var leaflet_dist_leaflet_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet/dist/leaflet.css */ "./node_modules/leaflet/dist/leaflet.css");
-/* harmony import */ var leaflet_dist_leaflet_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet_dist_leaflet_css__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_EnviromentalComponet_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/EnviromentalComponet.vue */ "./resources/js/components/EnviromentalComponet.vue");
-/* harmony import */ var _components_InfringementComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/InfringementComponent.vue */ "./resources/js/components/InfringementComponent.vue");
+/* harmony import */ var vue_toast_notification__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-toast-notification */ "./node_modules/vue-toast-notification/dist/index.js");
+/* harmony import */ var vue_toast_notification__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_toast_notification__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_toast_notification_dist_theme_sugar_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-toast-notification/dist/theme-sugar.css */ "./node_modules/vue-toast-notification/dist/theme-sugar.css");
+/* harmony import */ var vue_toast_notification_dist_theme_sugar_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_toast_notification_dist_theme_sugar_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var leaflet_dist_leaflet_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! leaflet/dist/leaflet.css */ "./node_modules/leaflet/dist/leaflet.css");
+/* harmony import */ var leaflet_dist_leaflet_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(leaflet_dist_leaflet_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_EnviromentalComponet_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/EnviromentalComponet.vue */ "./resources/js/components/EnviromentalComponet.vue");
+/* harmony import */ var _components_InfringementComponent_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/InfringementComponent.vue */ "./resources/js/components/InfringementComponent.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('enviromental-component', _components_EnviromentalComponet_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('infringement-component', _components_InfringementComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
-var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
+var options = {
+  /* position: 'top-right', */
+  duration: 3000,
+  keepOnHover: true,
+  theme: 'sugar'
+};
+vue__WEBPACK_IMPORTED_MODULE_3___default.a.use(vue_toast_notification__WEBPACK_IMPORTED_MODULE_0___default.a, options);
+
+
+vue__WEBPACK_IMPORTED_MODULE_3___default.a.component('enviromental-component', _components_EnviromentalComponet_vue__WEBPACK_IMPORTED_MODULE_4__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_3___default.a.component('infringement-component', _components_InfringementComponent_vue__WEBPACK_IMPORTED_MODULE_5__["default"]);
+var app = new vue__WEBPACK_IMPORTED_MODULE_3___default.a({
   el: '#app'
 });
 /* harmony default export */ __webpack_exports__["default"] = (app);

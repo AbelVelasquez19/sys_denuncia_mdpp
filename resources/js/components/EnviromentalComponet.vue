@@ -40,7 +40,7 @@ enviromental<template>
                                     <div class="col-md-3">
                                         <label for="basic-url" class="form-label">N°. Doc.</label>
                                         <div class="input-group mb-3">
-                                            <input type="text" class="form-control" v-model="user.numDoc" @blur="searchUser()">
+                                            <input type="text" class="form-control" v-model="user.numDoc" @input="searchUser()">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -68,7 +68,7 @@ enviromental<template>
                                     <div class="col-md-3">
                                         <label for="basic-url" class="form-label">N°. RUC</label>
                                         <div class="input-group mb-3">
-                                            <input type="text" class="form-control" v-model="user.numRuc" @blur="searchUser()">
+                                            <input type="text" class="form-control" v-model="user.numRuc" @input="searchUser()">
                                         </div>
                                     </div>
                                     <div class="col-md-9">
@@ -114,7 +114,6 @@ enviromental<template>
                                 <label for="basic-url" class="form-label">¿Ha realizado denuncia previa?</label>
                                 <div class="input-group mb-3">
                                     <select class="form-select" v-model="user.denun_previa">
-                                        <option value="" selected disabled>--Seleccionar--</option>
                                         <option value="NO">NO</option>
                                         <option value="SI">SI</option>
                                     </select>
@@ -123,7 +122,7 @@ enviromental<template>
                             <div class="col-md-6">
                                 <label for="basic-url" class="form-label">¿Ante que entidad?</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" v-model="user.resp_previa">
+                                    <input type="text" class="form-control" :disabled="user.denun_previa=='NO'? true:false" v-model="user.resp_previa">
                                 </div>
                             </div>
                         </div>
@@ -132,7 +131,6 @@ enviromental<template>
                                 <label for="basic-url" class="form-label">¿Obtuvo despuesta?</label>
                                 <div class="input-group mb-3">
                                     <select class="form-select" v-model="user.obt_resp">
-                                        <option value="" selected disabled>--Seleccionar--</option>
                                         <option value="NO">NO</option>
                                         <option value="SI">SI</option>
                                     </select>
@@ -141,7 +139,7 @@ enviromental<template>
                             <div class="col-md-6">
                                 <label for="basic-url" class="form-label">¿Cuál fue la respuesta?</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" v-model="user.resp_obt_resp">
+                                    <input type="text" class="form-control" :disabled="user.obt_resp=='NO' ? true:false" v-model="user.resp_obt_resp">
                                 </div>
                             </div>
                         </div>
@@ -151,8 +149,6 @@ enviromental<template>
                             <button class="btn btn-primary" @click="next()">Siguiente <i class="fa-solid fa-arrow-right"></i></button>
                         </div>
                     </div>
-
-
 
                     <fieldset v-show="NumerNext==2">
                         <legend>Datos del Denunciado</legend>
@@ -427,7 +423,7 @@ enviromental<template>
                 ],
                 user:{
                     idTypeEnviromental:1,
-                    typePers:'1',
+                    typePers:1,
                     typeDoc:'1',
                     numDoc:'',
                     numRuc:'',
@@ -439,9 +435,9 @@ enviromental<template>
                     cellPhone:'',
                     gmail:'',
                     address:'',
-                    denun_previa:'',
+                    denun_previa:'NO',
                     resp_previa:'',
-                    obt_resp:'',
+                    obt_resp:'NO',
                     resp_obt_resp:'',
                 },
                 enviromental:{
@@ -475,6 +471,48 @@ enviromental<template>
         },
         methods:{
             next(){
+                if(this.user.idTypeEnviromental==2){
+                    if(this.user.typePers==1){
+                        if(this.user.numDoc === '' || this.user.numDoc.length != 8){
+                            this.$toast.error('Numero Documento es requerido y/o debe tener solo 8 digitos');
+                            return;
+                        }
+                        if(this.user.name==''){
+                            this.$toast.error('Nombre es requerido');
+                            return;
+                        }
+                        if(this.user.lastName==''){
+                            this.$toast.error('Apellido paterno es requerido');
+                            return;
+                        }
+                        if(this.user.mothersLastName==''){
+                            this.$toast.error('Apellido materno es requerido');
+                            return;
+                        }
+                    }
+                    if(this.user.typePers==2){
+                        if(this.user.numRuc === '' || this.user.numRuc.length != 8){
+                            this.$toast.error('Numero Ruc es requerido y/o debe tener solo 11 digitos');
+                            return;
+                        }
+                        if(this.user.razonSocial==''){
+                            this.$toast.error('Numero Ruc es requerido y/o debe tener solo 11 digitos');
+                            return;
+                        }
+                    }    
+                }
+                if(this.user.denun_previa=='SI'){
+                    if(this.user.resp_previa==''){
+                        this.$toast.error('Respuesta de denuncia previa es requedido');
+                        return;
+                    }
+                }
+                if(this.user.obt_resp=='SI'){
+                    if(this.user.resp_obt_resp==''){
+                        this.$toast.error('Respuesta de denuncia es requedido');
+                        return;
+                    }
+                }
                 this.NumerNext = 2;
                 setTimeout(() => {
                     this.$refs.mymap.mapObject.invalidateSize(); 
@@ -483,7 +521,25 @@ enviromental<template>
             previus(){
                 this.NumerNext = 1;
             },
+            validateNumberAndLength() {
+                if(this.user.idTypeEnviromental==2){
+                   
+                }
+            },
             async searchUser(){
+                if(this.user.typePers==1){
+                    this.user.numDoc = this.user.numDoc.replace(/\D/g, '');
+                    if (this.user.numDoc.length >= 8) {
+                        this.user.numDoc = this.user.numDoc.slice(0, 8);
+                    }
+                }
+                
+                if(this.user.typePers==2){
+                    this.user.numRuc = this.user.numRuc.replace(/\D/g, '');
+                    if (this.user.numRuc.length >= 11) {
+                        this.user.numRuc = this.user.numRuc.slice(0, 11);
+                    }
+                }
                 let obj = {
                     numDoc : this.user.numDoc,
                     numRuc : this.user.numRuc,
@@ -580,6 +636,45 @@ enviromental<template>
                 }
             },
             async addEnviromental(){
+               if(this.enviromental.idTypeEnviromental==2){
+                    if(this.enviromental.typePers==1){
+                        if(this.enviromental.numDoc === '' || this.enviromental.numDoc.length != 8){
+                            this.$toast.error('Numero Documento es requerido y/o debe tener solo 8 digitos');
+                            return;
+                        }
+                        if(this.enviromental.name==''){
+                            this.$toast.error('Nombre es requerido');
+                            return;
+                        }
+                        if(this.enviromental.lastName==''){
+                            this.$toast.error('Apellido paterno es requerido');
+                            return;
+                        }
+                        if(this.enviromental.mothersLastName==''){
+                            this.$toast.error('Apellido materno es requerido');
+                            return;
+                        }
+                    }
+                    if(this.enviromental.typePers==2){
+                        if(this.enviromental.numRuc === '' || this.enviromental.numRuc.length != 8){
+                            this.$toast.error('Numero Ruc es requerido y/o debe tener solo 11 digitos');
+                            return;
+                        }
+                        if(this.enviromental.razonSocial==''){
+                            this.$toast.error('Numero Ruc es requerido y/o debe tener solo 11 digitos');
+                            return;
+                        }
+                    }
+               }
+
+               if(this.enviromental.addres_ubi==''){
+                    this.$toast.error('Es requerido lugar o dirección del hecho');
+                    return;
+               }
+               if(this.enviromental.description==''){
+                    this.$toast.error('Es requerido campo descripción');
+                    return;
+               }
                 const formData = new FormData();
                 formData.append('user_idTypeEnviromental', this.user.idTypeEnviromental);
                 formData.append('user_typePers',this.user.typePers);
@@ -623,9 +718,10 @@ enviromental<template>
                 const result = await Services.addNewInfo('/denuncia-ambiental/add-enviromental', formData);
                 console.log(result.status)
                 if(result.status){
+                    this.$toast.success('Su denuncia se registro correctamente');
                     this.user={
                         idTypeEnviromental:1,
-                        typePers:'1',
+                        typePers:1,
                         typeDoc:'1',
                         numDoc:'',
                         numRuc:'',
@@ -637,9 +733,9 @@ enviromental<template>
                         cellPhone:'',
                         gmail:'',
                         address:'',
-                        denun_previa:'',
+                        denun_previa:'NO',
                         resp_previa:'',
-                        obt_resp:'',
+                        obt_resp:'NO',
                         resp_obt_resp:'',
                     },
                     this.enviromental={
