@@ -59,6 +59,30 @@
     .link a{
         color: #dd4646  !important;
     }
+    .items-icon{
+        width: 15%;
+        border: 1px solid #fff;
+        padding: 1%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-left: 1%;
+        width: 150px;
+        height: 150px;
+        border-radius: 5%;
+    }
+    .items-icon img{
+        widows: 50%;
+        height: 50%;
+    }
+    .items-icon:hover{
+        background: 1px solid rgb(243, 243, 243, 0.3) !important;
+    }
+    .active_menu{
+        background: #fff !important;
+    }
+
+    
 </style>
 <body>
     <!-- Spinner Start -->
@@ -102,7 +126,7 @@
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
         <a href="index.html" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
             <h2 class="m-0">
-                <img src="https://virtual2.munipuentepiedra.gob.pe/assets/tools/image/logo_muni_color.png" alt="" width="100%" height="100%">
+                {{-- <img src="https://virtual2.munipuentepiedra.gob.pe/assets/tools/image/logo_muni_color.png" alt="" width="100%" height="100%"> --}}
             </h2>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -128,5 +152,17 @@
 
     <!-- Carousel Start -->
     <div class="container-fluid page-header py-6 my-6 mt-0 wow" data-wow-delay="0.1s">
+        <div class="row">
+            <div class="col-md-12 d-flex justify-content-center">
+                <a href="{{route('index')}}" class="items-icon  {{ request()->routeIs('index') ? 'active_menu' : '' }}">
+                    <img src="{{asset('images/proteccion-del-medio-ambiente.png')}}" alt="Denuncia Ambiental">
+                    <span>Denuncia Ambiental</span>
+                </a>
+                <a href="{{route('infra-index')}}" class="items-icon {{ request()->routeIs('infra-index') ? 'active_menu' : '' }}">
+                    <img src="{{asset('images/asistente-virtual.png')}}" alt="Denuncia Ambiental">
+                    <span> Denuncia GOU </span>
+                </a>
+            </div>
+        </div>
     </div>
     <!-- Carousel End -->

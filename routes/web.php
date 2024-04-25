@@ -24,4 +24,5 @@ Route::prefix('denuncia-ambiental')->group(function () {
 
 Route::prefix('denuncia-infraccion')->group(function () {
     Route::get('/', [InfringementController::class,'index'])->name('infra-index');
+    Route::post('/add-inspeccion', [InfringementController::class,'addInspeccion']);
 });

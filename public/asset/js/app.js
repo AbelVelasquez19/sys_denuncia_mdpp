@@ -2391,6 +2391,502 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/InfringementComponent.vue?vue&type=script&lang=js":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/InfringementComponent.vue?vue&type=script&lang=js ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _services_services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/services */ "./resources/js/services/services.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/vue2-leaflet.es.js");
+/* harmony import */ var leaflet_dist_images_marker_icon_2x_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! leaflet/dist/images/marker-icon-2x.png */ "./node_modules/leaflet/dist/images/marker-icon-2x.png");
+/* harmony import */ var leaflet_dist_images_marker_icon_2x_png__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(leaflet_dist_images_marker_icon_2x_png__WEBPACK_IMPORTED_MODULE_3__);
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw new Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw new Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'enviromentalComponet',
+  props: {
+    imgUrl: {
+      type: String,
+      "default": ""
+    },
+    imgShadow: {
+      type: String,
+      "default": ""
+    }
+  },
+  components: {
+    LMap: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LMap"],
+    LTileLayer: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LTileLayer"],
+    LControlZoom: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LControlZoom"],
+    LPopup: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LPopup"],
+    LMarker: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LMarker"],
+    LTooltip: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LTooltip"],
+    LLayerGroup: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LLayerGroup"],
+    LPolyline: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LPolyline"],
+    LControlAttribution: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LControlAttribution"],
+    LControlScale: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LControlScale"],
+    LControlLayers: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LControlLayers"]
+  },
+  data: function data() {
+    return {
+      NumerNext: 1,
+      zoom: 15,
+      center: [-11.86689943166356, -77.07686732141322],
+      mapOptions: {
+        zoomControl: false,
+        attributionControl: false,
+        zoomSnap: 0.5
+      },
+      zoomPosition: 'topleft',
+      attributionPosition: 'bottomright',
+      layersPosition: 'topright',
+      attributionPrefix: 'Vue2Leaflet',
+      imperial: false,
+      Positions: ['topleft', 'topright', 'bottomleft', 'bottomright'],
+      tileProviders: [{
+        name: 'OpenStreetMap',
+        visible: true,
+        attribution: '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+        url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+      }],
+      markerLatLng: [],
+      markers: [{
+        id: 'm1',
+        position: {
+          lat: -11.86689943166356,
+          lng: -77.07686732141322
+        },
+        tooltip: 'Municipalidad de Puente Piedra',
+        draggable: true,
+        visible: true
+      }],
+      user: {
+        idTypeEnviromental: 1,
+        typePers: 1,
+        typeDoc: '1',
+        numDoc: '',
+        numRuc: '',
+        razonSocial: '',
+        name: '',
+        lastName: '',
+        mothersLastName: '',
+        phone: '',
+        cellPhone: '',
+        gmail: '',
+        address: ''
+      },
+      enviromental: {
+        idTypeEnviromental: 1,
+        typePers: '1',
+        typeDoc: '1',
+        numDoc: '',
+        numRuc: '',
+        razonSocial: '',
+        name: '',
+        lastName: '',
+        mothersLastName: '',
+        phone: '',
+        cellPhone: '',
+        gmail: '',
+        address: '',
+        addres_ubi: '',
+        references: '',
+        files: '',
+        description: ''
+      },
+      activeTab: 'solicitante',
+      selectedItem: ''
+    };
+  },
+  mounted: function mounted() {
+    delete leaflet__WEBPACK_IMPORTED_MODULE_1__["Icon"].Default.prototype._getIconUrl;
+    leaflet__WEBPACK_IMPORTED_MODULE_1__["Icon"].Default.mergeOptions({
+      iconRetinaUrl: leaflet_dist_images_marker_icon_2x_png__WEBPACK_IMPORTED_MODULE_3___default.a,
+      iconUrl: this.imgUrl,
+      shadowUrl: this.imgShadow
+    });
+  },
+  methods: {
+    searchUser: function searchUser() {
+      var _this = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var obj, result;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              if (_this.user.typePers == 1) {
+                _this.user.numDoc = _this.user.numDoc.replace(/\D/g, '');
+                if (_this.user.numDoc.length >= 8) {
+                  _this.user.numDoc = _this.user.numDoc.slice(0, 8);
+                }
+              }
+              if (_this.user.typePers == 2) {
+                _this.user.numRuc = _this.user.numRuc.replace(/\D/g, '');
+                if (_this.user.numRuc.length >= 11) {
+                  _this.user.numRuc = _this.user.numRuc.slice(0, 11);
+                }
+              }
+              obj = {
+                numDoc: _this.user.numDoc,
+                numRuc: _this.user.numRuc,
+                typeDoc: _this.user.typeDoc
+              };
+              _context.next = 5;
+              return _services_services__WEBPACK_IMPORTED_MODULE_0__["default"].getShowInfo('/denuncia-ambiental/user-search', obj);
+            case 5:
+              result = _context.sent;
+              if (result.type == 'DNI') {
+                if (result.status) {
+                  console.log(result.data[0]);
+                  _this.user.name = result.data[0].no_usrio;
+                  _this.user.lastName = result.data[0].ap_pate;
+                  _this.user.mothersLastName = result.data[0].ap_mate;
+                  _this.user.phone = result.data[0].nu_tele;
+                  _this.user.cellPhone = result.data[0].nu_tele;
+                  _this.user.gmail = result.data[0].de_mail;
+                  _this.user.address = result.data[0].de_dire;
+                } else {
+                  _this.clearInputUser();
+                }
+              } else {
+                if (result.status) {
+                  _this.user.razonSocial = result.data[0].no_crto;
+                  _this.user.cellPhone = result.data[0].nu_tele;
+                  _this.user.gmail = result.data[0].de_mail;
+                  _this.user.address = result.data[0].de_dire;
+                } else {
+                  _this.clearInputUser();
+                }
+              }
+            case 7:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee);
+      }))();
+    },
+    searchUserEnviromental: function searchUserEnviromental() {
+      var _this2 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        var obj, result;
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              obj = {
+                numDoc: _this2.enviromental.numDoc,
+                numRuc: _this2.enviromental.numRuc,
+                typeDoc: _this2.enviromental.typeDoc
+              };
+              _context2.next = 3;
+              return _services_services__WEBPACK_IMPORTED_MODULE_0__["default"].getShowInfo('/denuncia-ambiental/user-search', obj);
+            case 3:
+              result = _context2.sent;
+              if (result.type == 'DNI') {
+                if (result.status) {
+                  console.log(result.data[0]);
+                  _this2.enviromental.name = result.data[0].no_usrio;
+                  _this2.enviromental.lastName = result.data[0].ap_pate;
+                  _this2.enviromental.mothersLastName = result.data[0].ap_mate;
+                  _this2.enviromental.phone = result.data[0].nu_tele;
+                  _this2.enviromental.cellPhone = result.data[0].nu_tele;
+                  _this2.enviromental.gmail = result.data[0].de_mail;
+                  _this2.enviromental.address = result.data[0].de_dire;
+                } else {
+                  _this2.clearInputEnviro();
+                }
+              } else {
+                if (result.status) {
+                  _this2.enviromental.razonSocial = result.data[0].no_crto;
+                  _this2.enviromental.cellPhone = result.data[0].nu_tele;
+                  _this2.enviromental.gmail = result.data[0].de_mail;
+                  _this2.enviromental.address = result.data[0].de_dire;
+                } else {
+                  _this2.clearInputEnviro();
+                }
+              }
+            case 5:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2);
+      }))();
+    },
+    showTab: function showTab(tabName) {
+      var _this3 = this;
+      document.querySelectorAll('.nav-link').forEach(function (el) {
+        el.classList.remove('active');
+      });
+      this.activeTab = tabName;
+      document.querySelectorAll('.nav-link').forEach(function (el) {
+        if (el.textContent.trim() === tabName) {
+          el.classList.add('active');
+        }
+      });
+      setTimeout(function () {
+        _this3.$refs.mymap.mapObject.invalidateSize();
+      }, 500);
+    },
+    clearInputUser: function clearInputUser() {
+      this.user.name = "";
+      this.user.lastName = "";
+      this.user.mothersLastName = "";
+      this.user.phone = "";
+      this.user.cellPhone = "";
+      this.user.gmail = "";
+      this.user.address = "";
+    },
+    clearInputEnviro: function clearInputEnviro() {
+      this.enviromental.razonSocial = "";
+      this.enviromental.phone = "";
+      this.enviromental.cellPhone = "";
+      this.enviromental.gmail = "";
+      this.enviromental.address = "";
+    },
+    handleFileSelect: function handleFileSelect(event) {
+      var selectedFiles = event.target.files[0];
+      this.enviromental.files = selectedFiles;
+    },
+    changeTypeDocuUser: function changeTypeDocuUser() {
+      if (this.user.typePers == 1) {
+        this.user.typeDoc = 1;
+      } else {
+        this.user.typeDoc = 2;
+      }
+    },
+    changeTypeDocuEnviromental: function changeTypeDocuEnviromental() {
+      if (this.enviromental.typePers == 1) {
+        this.enviromental.typeDoc = 1;
+      } else {
+        this.enviromental.typeDoc = 2;
+      }
+    },
+    addEnviromental: function addEnviromental() {
+      var _this4 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+        var formData, result;
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              if (!(_this4.user.idTypeEnviromental == 2)) {
+                _context3.next = 21;
+                break;
+              }
+              if (!(_this4.user.typePers == 1)) {
+                _context3.next = 14;
+                break;
+              }
+              if (!(_this4.user.numDoc === '' || _this4.user.numDoc.length != 8)) {
+                _context3.next = 5;
+                break;
+              }
+              _this4.$toast.error('Numero Documento es requerido y/o debe tener solo 8 digitos');
+              return _context3.abrupt("return");
+            case 5:
+              if (!(_this4.user.name == '')) {
+                _context3.next = 8;
+                break;
+              }
+              _this4.$toast.error('Nombre es requerido');
+              return _context3.abrupt("return");
+            case 8:
+              if (!(_this4.user.lastName == '')) {
+                _context3.next = 11;
+                break;
+              }
+              _this4.$toast.error('Apellido paterno es requerido');
+              return _context3.abrupt("return");
+            case 11:
+              if (!(_this4.user.mothersLastName == '')) {
+                _context3.next = 14;
+                break;
+              }
+              _this4.$toast.error('Apellido materno es requerido');
+              return _context3.abrupt("return");
+            case 14:
+              if (!(_this4.user.typePers == 2)) {
+                _context3.next = 21;
+                break;
+              }
+              if (!(_this4.user.numRuc === '' || _this4.user.numRuc.length != 8)) {
+                _context3.next = 18;
+                break;
+              }
+              _this4.$toast.error('Numero Ruc es requerido y/o debe tener solo 11 digitos');
+              return _context3.abrupt("return");
+            case 18:
+              if (!(_this4.user.razonSocial == '')) {
+                _context3.next = 21;
+                break;
+              }
+              _this4.$toast.error('Numero Ruc es requerido y/o debe tener solo 11 digitos');
+              return _context3.abrupt("return");
+            case 21:
+              if (!(_this4.enviromental.idTypeEnviromental == 2)) {
+                _context3.next = 42;
+                break;
+              }
+              if (!(_this4.enviromental.typePers == 1)) {
+                _context3.next = 35;
+                break;
+              }
+              if (!(_this4.enviromental.numDoc === '' || _this4.enviromental.numDoc.length != 8)) {
+                _context3.next = 26;
+                break;
+              }
+              _this4.$toast.error('Numero Documento es requerido y/o debe tener solo 8 digitos');
+              return _context3.abrupt("return");
+            case 26:
+              if (!(_this4.enviromental.name == '')) {
+                _context3.next = 29;
+                break;
+              }
+              _this4.$toast.error('Nombre es requerido');
+              return _context3.abrupt("return");
+            case 29:
+              if (!(_this4.enviromental.lastName == '')) {
+                _context3.next = 32;
+                break;
+              }
+              _this4.$toast.error('Apellido paterno es requerido');
+              return _context3.abrupt("return");
+            case 32:
+              if (!(_this4.enviromental.mothersLastName == '')) {
+                _context3.next = 35;
+                break;
+              }
+              _this4.$toast.error('Apellido materno es requerido');
+              return _context3.abrupt("return");
+            case 35:
+              if (!(_this4.enviromental.typePers == 2)) {
+                _context3.next = 42;
+                break;
+              }
+              if (!(_this4.enviromental.numRuc === '' || _this4.enviromental.numRuc.length != 8)) {
+                _context3.next = 39;
+                break;
+              }
+              _this4.$toast.error('Numero Ruc es requerido y/o debe tener solo 11 digitos');
+              return _context3.abrupt("return");
+            case 39:
+              if (!(_this4.enviromental.razonSocial == '')) {
+                _context3.next = 42;
+                break;
+              }
+              _this4.$toast.error('Numero Ruc es requerido y/o debe tener solo 11 digitos');
+              return _context3.abrupt("return");
+            case 42:
+              if (!(_this4.enviromental.addres_ubi == '')) {
+                _context3.next = 45;
+                break;
+              }
+              _this4.$toast.error('Es requerido lugar o dirección del hecho');
+              return _context3.abrupt("return");
+            case 45:
+              if (!(_this4.enviromental.description == '')) {
+                _context3.next = 48;
+                break;
+              }
+              _this4.$toast.error('Es requerido campo descripción');
+              return _context3.abrupt("return");
+            case 48:
+              formData = new FormData();
+              formData.append('user_idTypeEnviromental', _this4.user.idTypeEnviromental);
+              formData.append('user_typePers', _this4.user.typePers);
+              formData.append('user_typeDoc', _this4.user.typeDoc);
+              formData.append('user_numDoc', _this4.user.numDoc);
+              formData.append('user_numRuc', _this4.user.numRuc);
+              formData.append('user_razonSocial', _this4.user.razonSocial);
+              formData.append('user_name', _this4.user.name);
+              formData.append('user_lastName', _this4.user.lastName);
+              formData.append('user_mothersLastName', _this4.user.mothersLastName);
+              formData.append('user_phone', _this4.user.phone);
+              formData.append('user_cellPhone', _this4.user.cellPhone);
+              formData.append('user_gmail', _this4.user.gmail);
+              formData.append('user_address', _this4.user.address);
+              formData.append('enviromental_idTypeEnviromental', _this4.enviromental.idTypeEnviromental);
+              formData.append('enviromental_typePers', _this4.enviromental.typePers);
+              formData.append('enviromental_typeDoc', _this4.enviromental.typeDoc);
+              formData.append('enviromental_numDoc', _this4.enviromental.numDoc);
+              formData.append('enviromental_numRuc', _this4.enviromental.numRuc);
+              formData.append('enviromental_razonSocial', _this4.enviromental.razonSocial);
+              formData.append('enviromental_name', _this4.enviromental.name);
+              formData.append('enviromental_lastName', _this4.enviromental.lastName);
+              formData.append('enviromental_mothersLastName', _this4.enviromental.mothersLastName);
+              formData.append('enviromental_phone', _this4.enviromental.phone);
+              formData.append('enviromental_cellPhone', _this4.enviromental.cellPhone);
+              formData.append('enviromental_gmail', _this4.enviromental.gmail);
+              formData.append('enviromental_address', _this4.enviromental.address);
+              formData.append('enviromental_addres_ubi', _this4.enviromental.addres_ubi);
+              formData.append('enviromental_references', _this4.enviromental.references);
+              formData.append('enviromental_files', _this4.enviromental.files);
+              formData.append('enviromental_description', _this4.enviromental.description);
+              formData.append('enviromental_longitud', _this4.markers[0].position.lng);
+              formData.append('enviromental_latitud', _this4.markers[0].position.lat);
+              _context3.next = 83;
+              return _services_services__WEBPACK_IMPORTED_MODULE_0__["default"].addNewInfo('denuncia-infraccion/add-inspeccion', formData);
+            case 83:
+              result = _context3.sent;
+              console.log(result.status);
+              if (result.status) {
+                _this4.$toast.success('Su denuncia se registro correctamente');
+                _this4.user = {
+                  idTypeEnviromental: 1,
+                  typePers: 1,
+                  typeDoc: '1',
+                  numDoc: '',
+                  numRuc: '',
+                  razonSocial: '',
+                  name: '',
+                  lastName: '',
+                  mothersLastName: '',
+                  phone: '',
+                  cellPhone: '',
+                  gmail: '',
+                  address: ''
+                }, _this4.enviromental = {
+                  idTypeEnviromental: 1,
+                  typePers: '1',
+                  typeDoc: '1',
+                  numDoc: '',
+                  numRuc: '',
+                  razonSocial: '',
+                  name: '',
+                  lastName: '',
+                  mothersLastName: '',
+                  phone: '',
+                  cellPhone: '',
+                  gmail: '',
+                  address: '',
+                  addres_ubi: '',
+                  references: '',
+                  files: '',
+                  description: ''
+                }, _this4.activeTab = 'solicitante';
+              }
+            case 86:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3);
+      }))();
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EnviromentalComponet.vue?vue&type=template&id=e0717cec":
 /*!****************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EnviromentalComponet.vue?vue&type=template&id=e0717cec ***!
@@ -3739,9 +4235,1208 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("h1", [_vm._v("tem")]);
+  return _c("div", {
+    staticClass: "container py-5 pt-lg-0"
+  }, [_c("div", {
+    staticClass: "row gx-0"
+  }, [_c("div", {
+    staticClass: "col-lg-12 wow fadeIn",
+    attrs: {
+      "data-wow-delay": "0.1s"
+    }
+  }, [_c("div", {
+    staticClass: "bg-white shadow align-items-center p-4"
+  }, [_c("ul", {
+    staticClass: "nav nav-tabs",
+    attrs: {
+      role: "tablist"
+    }
+  }, [_c("li", {
+    staticClass: "nav-item",
+    attrs: {
+      role: "presentation"
+    }
+  }, [_c("a", {
+    staticClass: "nav-link",
+    "class": {
+      active: _vm.activeTab === "solicitante"
+    },
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.showTab("solicitante");
+      }
+    }
+  }, [_vm._v("Denunciante")])]), _vm._v(" "), _c("li", {
+    staticClass: "nav-item",
+    attrs: {
+      role: "presentation"
+    }
+  }, [_c("a", {
+    staticClass: "nav-link",
+    "class": {
+      active: _vm.activeTab === "establecimiento"
+    },
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.showTab("establecimiento");
+      }
+    }
+  }, [_vm._v("Denunciado")])]), _vm._v(" "), _c("li", {
+    staticClass: "nav-item",
+    attrs: {
+      role: "presentation"
+    }
+  }, [_c("a", {
+    staticClass: "nav-link",
+    "class": {
+      active: _vm.activeTab === "giro"
+    },
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.showTab("giro");
+      }
+    }
+  }, [_vm._v("Lugar de hecho")])])]), _vm._v(" "), _c("div", {
+    staticClass: "tab-content",
+    attrs: {
+      id: "myTabContent"
+    }
+  }, [_c("div", {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: _vm.activeTab === "solicitante",
+      expression: "activeTab === 'solicitante'"
+    }]
+  }, [_c("fieldset", [_c("legend"), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-4"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Tipo de Denunciante")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.user.idTypeEnviromental,
+      expression: "user.idTypeEnviromental"
+    }],
+    staticClass: "form-select",
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.user, "idTypeEnviromental", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("Anónimo")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "2"
+    }
+  }, [_vm._v("Con reserva de datos")])])])]), _vm._v(" "), _vm.user.idTypeEnviromental == 2 ? _c("div", {
+    staticClass: "col-md-4"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Tipo Persona")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.user.typePers,
+      expression: "user.typePers"
+    }],
+    staticClass: "form-select",
+    on: {
+      change: [function ($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.user, "typePers", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }, _vm.changeTypeDocuUser]
+    }
+  }, [_c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("Natural")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "2"
+    }
+  }, [_vm._v("Jurídica")])])])]) : _vm._e(), _vm._v(" "), _vm.user.idTypeEnviromental == 2 ? _c("div", {
+    staticClass: "col-md-4"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Tipo de Doc.")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.user.typeDoc,
+      expression: "user.typeDoc"
+    }],
+    staticClass: "form-select",
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.user, "typeDoc", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("DNI")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "2"
+    }
+  }, [_vm._v("RUC")])])])]) : _vm._e()]), _vm._v(" "), _vm.user.idTypeEnviromental == 2 ? _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: _vm.user.typePers == 1,
+      expression: "user.typePers == 1"
+    }],
+    staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("N°. Doc.")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.user.numDoc,
+      expression: "user.numDoc"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.user.numDoc
+    },
+    on: {
+      input: [function ($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.user, "numDoc", $event.target.value);
+      }, function ($event) {
+        return _vm.searchUser();
+      }]
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Apellido Paterno")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.user.lastName,
+      expression: "user.lastName"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.user.lastName
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.user, "lastName", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Apellido Materno")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.user.mothersLastName,
+      expression: "user.mothersLastName"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.user.mothersLastName
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.user, "mothersLastName", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Nombres")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.user.name,
+      expression: "user.name"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.user.name
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.user, "name", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: _vm.user.typePers == 2,
+      expression: "user.typePers == 2"
+    }],
+    staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("N°. RUC")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.user.numRuc,
+      expression: "user.numRuc"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.user.numRuc
+    },
+    on: {
+      input: [function ($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.user, "numRuc", $event.target.value);
+      }, function ($event) {
+        return _vm.searchUser();
+      }]
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-9"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Razón Social")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.user.razonSocial,
+      expression: "user.razonSocial"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.user.razonSocial
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.user, "razonSocial", $event.target.value);
+      }
+    }
+  })])])])])]) : _vm._e(), _vm._v(" "), _vm.user.idTypeEnviromental == 2 ? _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-4"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Telefono")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.user.phone,
+      expression: "user.phone"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.user.phone
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.user, "phone", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-4"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Celular")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.user.cellPhone,
+      expression: "user.cellPhone"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.user.cellPhone
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.user, "cellPhone", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-4"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Correo")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.user.gmail,
+      expression: "user.gmail"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.user.gmail
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.user, "gmail", $event.target.value);
+      }
+    }
+  })])])]) : _vm._e(), _vm._v(" "), _vm.user.idTypeEnviromental == 2 ? _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-12"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Dirección")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.user.address,
+      expression: "user.address"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.user.address
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.user, "address", $event.target.value);
+      }
+    }
+  })])]) : _vm._e()])]), _vm._v(" "), _c("div", {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: _vm.activeTab === "establecimiento",
+      expression: "activeTab === 'establecimiento'"
+    }]
+  }, [_c("fieldset", [_c("legend"), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-4"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Tipo de Denunciante")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.enviromental.idTypeEnviromental,
+      expression: "enviromental.idTypeEnviromental"
+    }],
+    staticClass: "form-select",
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.enviromental, "idTypeEnviromental", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("Anónimo")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "2"
+    }
+  }, [_vm._v("Con reserva de datos")])])])]), _vm._v(" "), _vm.enviromental.idTypeEnviromental == 2 ? _c("div", {
+    staticClass: "col-md-4"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Tipo Persona")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.enviromental.typePers,
+      expression: "enviromental.typePers"
+    }],
+    staticClass: "form-select",
+    on: {
+      change: [function ($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.enviromental, "typePers", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }, _vm.changeTypeDocuEnviromental]
+    }
+  }, [_c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("Natural")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "2"
+    }
+  }, [_vm._v("Jurídica")])])])]) : _vm._e(), _vm._v(" "), _vm.enviromental.idTypeEnviromental == 2 ? _c("div", {
+    staticClass: "col-md-4"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Tipo de Doc.")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.enviromental.typeDoc,
+      expression: "enviromental.typeDoc"
+    }],
+    staticClass: "form-select",
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.enviromental, "typeDoc", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("DNI")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "2"
+    }
+  }, [_vm._v("RUC")])])])]) : _vm._e()]), _vm._v(" "), _vm.enviromental.idTypeEnviromental == 2 ? _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: _vm.enviromental.typePers == 1,
+      expression: "enviromental.typePers == 1"
+    }],
+    staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("N°. Doc.")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.enviromental.numDoc,
+      expression: "enviromental.numDoc"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.enviromental.numDoc
+    },
+    on: {
+      blur: _vm.searchUserEnviromental,
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.enviromental, "numDoc", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Apellido Paterno")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.enviromental.lastName,
+      expression: "enviromental.lastName"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.enviromental.lastName
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.enviromental, "lastName", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Apellido Materno")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.enviromental.mothersLastName,
+      expression: "enviromental.mothersLastName"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.enviromental.mothersLastName
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.enviromental, "mothersLastName", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Nombres")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.enviromental.name,
+      expression: "enviromental.name"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.enviromental.name
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.enviromental, "name", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: _vm.enviromental.typePers == 2,
+      expression: "enviromental.typePers == 2"
+    }],
+    staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("N°. RUC")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.enviromental.numRuc,
+      expression: "enviromental.numRuc"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.enviromental.numRuc
+    },
+    on: {
+      blur: _vm.searchUserEnviromental,
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.enviromental, "numRuc", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-9"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Razon Social")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.enviromental.razonSocial,
+      expression: "enviromental.razonSocial"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.enviromental.razonSocial
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.enviromental, "razonSocial", $event.target.value);
+      }
+    }
+  })])])])])]) : _vm._e(), _vm._v(" "), _vm.enviromental.idTypeEnviromental == 2 ? _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-4"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Telefono")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.enviromental.phone,
+      expression: "enviromental.phone"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.enviromental.phone
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.enviromental, "phone", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-4"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Celular")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.enviromental.cellPhone,
+      expression: "enviromental.cellPhone"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.enviromental.cellPhone
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.enviromental, "cellPhone", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-4"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Correo")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.enviromental.gmail,
+      expression: "enviromental.gmail"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.enviromental.gmail
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.enviromental, "gmail", $event.target.value);
+      }
+    }
+  })])])]) : _vm._e(), _vm._v(" "), _vm.enviromental.idTypeEnviromental == 2 ? _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-12"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Dirección")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.enviromental.address,
+      expression: "enviromental.address"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.enviromental.address
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.enviromental, "address", $event.target.value);
+      }
+    }
+  })])]) : _vm._e()])]), _vm._v(" "), _c("div", {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: _vm.activeTab === "giro",
+      expression: "activeTab === 'giro'"
+    }]
+  }, [_c("fieldset", [_c("legend"), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-4"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Dirección")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.enviromental.addres_ubi,
+      expression: "enviromental.addres_ubi"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.enviromental.addres_ubi
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.enviromental, "addres_ubi", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-4"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Referencia")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.enviromental.references,
+      expression: "enviromental.references"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.enviromental.references
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.enviromental, "references", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-4"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Cargar archivos de capacidad\n                                        2MB(MAX)")]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "file"
+    },
+    on: {
+      change: _vm.handleFileSelect
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Descripcion")]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12"
+  }, [_c("textarea", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.enviromental.description,
+      expression: "enviromental.description"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      cols: "30",
+      rows: "3"
+    },
+    domProps: {
+      value: _vm.enviromental.description
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.enviromental, "description", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      display: "none"
+    }
+  }, [_c("table", [_vm._m(0), _vm._v(" "), _vm._l(_vm.markers, function (item, index) {
+    return _c("tr", {
+      key: index
+    }, [_c("td", [_c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.number",
+        value: item.position.lat,
+        expression: "item.position.lat",
+        modifiers: {
+          number: true
+        }
+      }],
+      attrs: {
+        type: "text",
+        id: "MAPA_LONGITUD",
+        name: "MAPA_LONGITUD"
+      },
+      domProps: {
+        value: item.position.lat
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item.position, "lat", _vm._n($event.target.value));
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })]), _vm._v(" "), _c("td", [_c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.number",
+        value: item.position.lng,
+        expression: "item.position.lng",
+        modifiers: {
+          number: true
+        }
+      }],
+      attrs: {
+        type: "text",
+        id: "MAPA_LATITUD",
+        name: "MAPA_LATITUD"
+      },
+      domProps: {
+        value: item.position.lng
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item.position, "lng", _vm._n($event.target.value));
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })])]);
+  })], 2)]), _vm._v(" "), _c("div", {
+    staticClass: "row mt-2"
+  }, [_c("div", {
+    staticClass: "col-md-12",
+    attrs: {
+      id: "map-container"
+    }
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "basic-url"
+    }
+  }, [_vm._v("Marque la ubicación de los\n                                        hechos")]), _vm._v(" "), _c("l-map", {
+    ref: "mymap",
+    staticStyle: {
+      height: "92%",
+      width: "100%"
+    },
+    attrs: {
+      zoom: _vm.zoom,
+      options: _vm.mapOptions,
+      center: _vm.center
+    }
+  }, [_vm._l(_vm.tileProviders, function (tileProvider) {
+    return _c("l-tile-layer", {
+      key: tileProvider.name,
+      attrs: {
+        name: tileProvider.name,
+        visible: tileProvider.visible,
+        url: tileProvider.url,
+        attribution: tileProvider.attribution,
+        "layer-type": "base"
+      }
+    });
+  }), _vm._v(" "), _c("l-control-zoom", {
+    attrs: {
+      position: _vm.zoomPosition
+    }
+  }), _vm._v(" "), _vm._l(_vm.markers, function (marker) {
+    return _c("l-marker", {
+      key: marker.id,
+      attrs: {
+        visible: marker.visible,
+        draggable: marker.draggable,
+        "lat-lng": marker.position,
+        icon: marker.icon
+      },
+      on: {
+        "update:latLng": function updateLatLng($event) {
+          return _vm.$set(marker, "position", $event);
+        },
+        "update:lat-lng": function updateLatLng($event) {
+          return _vm.$set(marker, "position", $event);
+        }
+      }
+    }, [_c("l-popup", {
+      attrs: {
+        content: marker.tooltip
+      }
+    }), _vm._v(" "), _c("l-tooltip", {
+      attrs: {
+        content: marker.tooltip
+      }
+    })], 1);
+  })], 2)], 1)])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row mt-4"
+  }, [_c("div", {
+    staticClass: "col-md-12 d-flex justify-content-end"
+  }, [_c("button", {
+    staticClass: "btn btn-primary",
+    on: {
+      click: function click($event) {
+        return _vm.addEnviromental();
+      }
+    }
+  }, [_vm._v("Registrar")])])])])])])]);
 };
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("tr", [_c("th", [_vm._v("Latitude")]), _vm._v(" "), _c("th", [_vm._v("Longitude")])]);
+}];
 render._withStripped = true;
 
 
@@ -62022,15 +63717,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _InfringementComponent_vue_vue_type_template_id_76d4d5f0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InfringementComponent.vue?vue&type=template&id=76d4d5f0 */ "./resources/js/components/InfringementComponent.vue?vue&type=template&id=76d4d5f0");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _InfringementComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InfringementComponent.vue?vue&type=script&lang=js */ "./resources/js/components/InfringementComponent.vue?vue&type=script&lang=js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _InfringementComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"],
   _InfringementComponent_vue_vue_type_template_id_76d4d5f0__WEBPACK_IMPORTED_MODULE_0__["render"],
   _InfringementComponent_vue_vue_type_template_id_76d4d5f0__WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -62044,6 +63741,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/components/InfringementComponent.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/InfringementComponent.vue?vue&type=script&lang=js":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/InfringementComponent.vue?vue&type=script&lang=js ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InfringementComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./InfringementComponent.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/InfringementComponent.vue?vue&type=script&lang=js");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InfringementComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -62171,8 +63882,8 @@ var addNewInfo = /*#__PURE__*/function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\denuncia\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\denuncia\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp7_4_14\htdocs\sys_denuncia_mdpp\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp7_4_14\htdocs\sys_denuncia_mdpp\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

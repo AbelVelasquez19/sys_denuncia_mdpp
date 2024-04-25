@@ -1,4 +1,4 @@
-enviromental<template>
+<template>
     <div class="container py-5 pt-lg-0">
         <div class="row gx-0">
             <div class="col-lg-12 wow fadeIn" data-wow-delay="0.1s">
