@@ -31,7 +31,6 @@ class ConsultaController extends Controller
         $annoExpediente= $request->input('annoExpediente');
         $numeroExpediente= $request->input('numeroExpediente');
         try {
-            //$sql = DB::connection('sigtram')->select("SELECT * from sistema.p_dto_trmtes pdt where pdt.nu_expe_todo ='$numeroExpediente' and pdt.cdgo_anio = '$annoExpediente' and pdt.cdgo_tpo_trmte ='$tipoExpediente' ");
             $sql1 = PdoTramite::select('cdgo_dto_trmte','nu_expe_todo')->where('nu_expe_todo',$numeroExpediente)
                                 ->where('cdgo_anio',$annoExpediente)
                                 ->where('cdgo_tpo_trmte',$tipoExpediente)->first();
