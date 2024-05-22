@@ -29,7 +29,7 @@ class ConsultaController extends Controller
     public function listaMovimientoExpediente(Request $request){
         $tipoExpediente= $request->input('tipoExpediente');
         $annoExpediente= $request->input('annoExpediente');
-        $numeroExpediente= $request->input('numeroExpediente');
+        $numeroExpediente= strtoupper($request->input('numeroExpediente'));
         try {
             $sql1 = PdoTramite::select('cdgo_dto_trmte','nu_expe_todo')->where('nu_expe_todo',$numeroExpediente)
                                 ->where('cdgo_anio',$annoExpediente)
