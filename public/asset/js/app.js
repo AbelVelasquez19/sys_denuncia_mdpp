@@ -2960,6 +2960,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this2.detalle = result.result[0].detalle;
                   _this2.expediente = result.result[0].expediente;
                 } else {
+                  _this2.opcion = 0;
+                  _this2.detalle = {};
+                  _this2.expediente = null;
                   _this2.$toast.error('No existe el número de tramite');
                 }
               } else {

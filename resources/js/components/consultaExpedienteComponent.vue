@@ -116,6 +116,9 @@
                         this.detalle = result.result[0].detalle
                         this.expediente = result.result[0].expediente
                     }else{
+                        this.opcion = 0;
+                        this.detalle = {}
+                        this.expediente = null
                         this.$toast.error('No existe el número de tramite');
                     }
                 }else{
