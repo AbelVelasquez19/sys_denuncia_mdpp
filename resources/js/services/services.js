@@ -13,7 +13,17 @@ const getShowInfo = async (url,id) => {
         };
     }
 }
-
+const getAll = async (url) => {
+    try {
+        let result = {};
+        const response = await axios.get(url);
+        return result = response.data;
+    } catch (error) {
+        return error = {
+            status:'500',
+        };
+    }
+}
 const addNewInfo = async(url,obj) => {
     try {
         let result = [];
@@ -33,5 +43,6 @@ const addNewInfo = async(url,obj) => {
 
 export default {
     getShowInfo,
-    addNewInfo
+    addNewInfo,
+    getAll
 }

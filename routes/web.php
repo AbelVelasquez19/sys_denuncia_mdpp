@@ -1,21 +1,12 @@
 <?php
 
+use App\Http\Controllers\consultas\ConsultaController;
 use App\Http\Controllers\DenunciaAmbiental;
 use App\Http\Controllers\system\UserController;
 use App\Http\Controllers\enviromental\EnviromentalController;
 use App\Http\Controllers\enviromental\InfringementController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 Route::prefix('denuncia-ambiental')->group(function () {
     Route::get('/', [DenunciaAmbiental::class,'index'])->name('index');
     Route::post('/user-search', [UserController::class,'getUser']);
@@ -25,4 +16,10 @@ Route::prefix('denuncia-ambiental')->group(function () {
 Route::prefix('denuncia-infraccion')->group(function () {
     Route::get('/', [InfringementController::class,'index'])->name('infra-index');
     Route::post('/add-inspeccion', [InfringementController::class,'addInspeccion']);
+});
+
+Route::prefix('consultas')->group(function(){
+    Route::get('/expedientes', [ConsultaController::class,'consultaExpediente'])->name('consulta.expediente');
+    Route::get('/anno', [ConsultaController::class,'listaAnno']);
+    Route::post('/buscar', [ConsultaController::class,'listaMovimientoExpediente']);
 });

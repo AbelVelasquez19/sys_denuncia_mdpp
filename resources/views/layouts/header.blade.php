@@ -142,6 +142,12 @@
                         <a href="{{route('infra-index')}}" class="dropdown-item">Denuncia Gou</a>
                     </div>
                 </div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">CONSULTAS</a>
+                    <div class="dropdown-menu bg-light m-0">
+                        <a href="{{route('consulta.expediente')}}" class="dropdown-item">Consulta de Expedientes</a>
+                    </div>
+                </div>
                {{--  <a href="contact.html" class="nav-item nav-link">Contact</a> --}}
             </div>
             <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Empezar<i class="fa fa-arrow-right ms-3"></i></a>

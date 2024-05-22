@@ -16,8 +16,10 @@ Vue.use(VueToast,options);
 
 import EnviromentalComponent from './components/EnviromentalComponet.vue';
 import InfringementComponent from './components/InfringementComponent.vue';
+import consultaExpedienteComponent from './components/consultaExpedienteComponent.vue';
 Vue.component('enviromental-component', EnviromentalComponent);
 Vue.component('infringement-component', InfringementComponent);
+Vue.component('consulta-expediente-component', consultaExpedienteComponent);
 const app = new Vue({
     el: '#app',
 });
