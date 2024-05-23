@@ -31,7 +31,8 @@ class ConsultaController extends Controller
         $annoExpediente= $request->input('annoExpediente');
         $numeroExpediente= strtoupper($request->input('numeroExpediente'));
         try {
-            $sql1 = PdoTramite::select('cdgo_dto_trmte','nu_expe_todo')->where('nu_expe_todo',$numeroExpediente)
+            $sql1 = PdoTramite::select('cdgo_dto_trmte','nu_expe_todo')
+                                ->where('nu_expe_trmte',$numeroExpediente)
                                 ->where('cdgo_anio',$annoExpediente)
                                 ->where('cdgo_tpo_trmte',$tipoExpediente)->first();
             if($sql1){
