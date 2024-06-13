@@ -28,4 +28,5 @@ Route::prefix('consultas')->group(function(){
 Route::prefix('api')->group(function(){
     Route::get('/notificacion-evento-funcionario', [ApiController::class,'notificacionEventoFuncionario']);
     Route::get('/notificacion-evento-administrado', [ApiController::class,'notificacionEventoAdministrado']);
+    Route::get('/notificacion-evento-firma-pendiente', [ApiController::class,'notificacionEventoFirmaPendiente']);
 });
