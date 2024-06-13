@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\consultas\ConsultaController;
 use App\Http\Controllers\DenunciaAmbiental;
 use App\Http\Controllers\system\UserController;
@@ -22,4 +23,9 @@ Route::prefix('consultas')->group(function(){
     Route::get('/expedientes', [ConsultaController::class,'consultaExpediente'])->name('consulta.expediente');
     Route::get('/anno', [ConsultaController::class,'listaAnno']);
     Route::post('/buscar', [ConsultaController::class,'listaMovimientoExpediente']);
+});
+
+Route::prefix('api')->group(function(){
+    Route::get('/notificacion-evento-funcionario', [ApiController::class,'notificacionEventoFuncionario']);
+    Route::get('/notificacion-evento-administrado', [ApiController::class,'notificacionEventoAdministrado']);
 });
