@@ -92,6 +92,20 @@ return [
             'schema' => 'public',
             'sslmode' => 'prefer',
         ],
+        'sigtram_seguridad' => [
+            'driver' => 'pgsql',
+            'url' => env('DATABASE_URL'),
+            'host' => env('SIGTRAM_SEGURID_DB_HOST', '127.0.0.1'),
+            'port' => env('SIGTRAM_SEGURID_PORT', '5432'),
+            'database' => env('SIGTRAM_SEGURID_DATABASE', 'forge'),
+            'username' => env('SIGTRAM_SEGURID_USERNAME', 'forge'),
+            'password' => env('SIGTRAM_SEGURID_PASSWORD', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
