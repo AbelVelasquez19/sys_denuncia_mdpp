@@ -151,7 +151,7 @@ class ApiController extends Controller
                                                         where i.iddb = '.$idInsidencia);
         foreach ($sql as $resultado) {
              //return $request;
-            $numeroCelular = $resultado->telefonodb;
+            $numeroCelular = '+51'.$resultado->telefonodb;
             $base64Image = $resultado->foto2;
             $serenazgo = $resultado->apellidosdb;
             $fechaRegistro = $resultado->fecha_registro;
