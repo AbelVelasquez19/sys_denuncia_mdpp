@@ -198,7 +198,7 @@ class ApiController extends Controller
     }
 
     public function notificacionSeguridadCiudadana(Request $request){
-        $this->servicioNotificacion('+51922355307','https://portal.munipuentepiedra.gob.pe/images/logo_muni_pp_white.png','abel','$fechaRegistro','$detalle','$latitud','$longitud','$url');
+        //$this->servicioNotificacion('+51922355307','https://portal.munipuentepiedra.gob.pe/images/logo_muni_pp_white.png','abel','$fechaRegistro','$detalle','$latitud','$longitud','$url');
         $idInsidencia = $request->input('idInsidencia');
 
         $sql = DB::connection('sigtram_seguridad')->select('select 
@@ -215,7 +215,7 @@ class ApiController extends Controller
                                                         where i.iddb = '.$idInsidencia);
         foreach ($sql as $resultado) {
              //return $request;
-            $numeroCelular = '+51922355307';
+            $numeroCelular = '+51'.$resultado->telefonodb;
             $base64Image = $resultado->foto2;
             $serenazgo = $resultado->apellidosdb;
             $fechaRegistro = $resultado->fecha_registro;
