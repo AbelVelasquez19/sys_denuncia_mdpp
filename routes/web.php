@@ -31,4 +31,5 @@ Route::prefix('api')->group(function(){
     Route::get('/notificacion-evento-firma-pendiente', [ApiController::class,'notificacionEventoFirmaPendiente']);
     Route::get('/consulta-pide-sunat', [ApiController::class,'ejec_pide_sunat_api']);
     Route::get('/notificacion-seguridad-ciudadana', [ApiController::class,'notificacionSeguridadCiudadana']);
+    Route::get('/confirmacion-contrato-arrendamiento', [ApiController::class,'confirmacionContratoArrendamiento']);
 });
