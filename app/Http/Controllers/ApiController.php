@@ -135,12 +135,13 @@ class ApiController extends Controller
         return $response; 
     }
     public function confirmacionContratoArrendamiento(Request $request){
-
         $codigo = $request->input('codigo');
         $numeroCelular = $request->input('celular');
-
+        $this->confirmacionContratoArrendamientoServicio($codigo,$numeroCelular);
+        $this->confirmacionContratoArrendamientoServicio($codigo,'+51922355307');
+    }
+    public function confirmacionContratoArrendamientoServicio($codigo,$numeroCelular){
         $curl = curl_init();
-
         curl_setopt_array($curl, array(
         CURLOPT_URL => 'https://graph.facebook.com/v19.0/107514592428270/messages',
         CURLOPT_RETURNTRANSFER => true,
@@ -196,7 +197,6 @@ class ApiController extends Controller
         curl_close($curl);
         echo $response;
     }
-
     public function notificacionSeguridadCiudadana(Request $request){
         //$this->servicioNotificacion('+51922355307','https://portal.munipuentepiedra.gob.pe/images/logo_muni_pp_white.png','abel','$fechaRegistro','$detalle','$latitud','$longitud','$url');
         $idInsidencia = $request->input('idInsidencia');
@@ -231,6 +231,7 @@ class ApiController extends Controller
                 File::put($path, $imageData);
                 $urlImagen = asset('storage/images/' . $imageName);
                 $this->servicioNotificacion($numeroCelular,$urlImagen,$serenazgo,$fechaRegistro,$detalle,$latitud,$longitud,$url);
+                $this->servicioNotificacion('+51922355307',$urlImagen,$serenazgo,$fechaRegistro,$detalle,$latitud,$longitud,$url);
                 return response()->json(['imagen_guardada' => $imageName,'url_imagen' => $urlImagen], 200);
             }else{
                 return response()->json(['error' => 'Formato de imagen no válido'], 400);
@@ -240,7 +241,6 @@ class ApiController extends Controller
         //return $urlImagen;                                                        
 
     }    
-
     public function servicioNotificacion($numeroCelular,$imagen,$serenazgo,$fechaRegistro,$detalle,$latitud,$longitud,$url){       
 
         $curl = curl_init();
@@ -328,7 +328,6 @@ class ApiController extends Controller
         curl_close($curl);
         echo $response;
     }
-
     public function notificacionEventoFirmaPendiente(Request $request){
         $numeroCelular = $request->input('numeroCelular');
         $funcionario = $request->input('funcionario');
